@@ -15,7 +15,7 @@ formulario.addEventListener("submit",function(e){
     e.preventDefault();
 
     var data = {
-        "username": document.getElementById("username").value,
+        "email": document.getElementById("email").value,
         "password": document.getElementById("password").value,
 
     };
@@ -31,7 +31,8 @@ formulario.addEventListener("submit",function(e){
             res.json()
         )
         .then(dato => {
-            localStorage.setItem("username",dato["username"]);
+            localStorage.setItem("email",dato["email"]);
+            localStorage.setItem("name",dato["name"]);
             localStorage.setItem("role",dato["role"]);
 
 
@@ -41,6 +42,7 @@ formulario.addEventListener("submit",function(e){
             console.log(dato)
 
             console.log("Este es el username" + dato["username"]);
+            console.log("Este es el email" + dato["email"]);
 
             console.log("Este es el rol que deberia coger el IF:  " + dato["role"])
 

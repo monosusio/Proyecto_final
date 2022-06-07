@@ -26,7 +26,8 @@
     <form id="crear" action="./api/users/form" method="post" class="formulario">
         <h2 class = "CrearCuenta"> Crear Cuenta</h2>
         <p class="CuentaGratis"> Crear cuenta gratis</p>
-        Username: <input type="text" placeholder="Nombre" name="username" required />
+        Name: <input type="text" placeholder="Nombre" name="name" required />
+        Email: <input type="text" placeholder="Email" name="email" required />
         Password: <input type="password" placeholder="Contraseña" name="password" required />
 
         <select name="role" style="width:200px">
@@ -47,7 +48,7 @@
         <h2 class = "CrearCuenta"> Iniciar Sesion</h2>
         <p class="CuentaGratis">¿No tienes cuenta?</p>
 
-        Username: <input type="text" name="username" id="username" required />
+        Email: <input type="text" name="email" id="email" required />
         Password: <input type="password" name="password" id="password" required />
         <input  type="submit"  value="IniciarSesion">
         <!--        <a href="artista.html"><input type="button" value="Iniciar Sesion"></a>-->

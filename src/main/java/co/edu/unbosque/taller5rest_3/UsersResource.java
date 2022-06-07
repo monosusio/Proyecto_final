@@ -76,7 +76,8 @@ public class UsersResource {
 
         UsersService bass =new UsersService(conn);
         UserApp n=new UserApp(null,null,null, null);
-        String email_n=user.getEmail()  ;
+        String email_n=user.getEmail();
+        String name_n=user.getName();
         String password_n=user.getPassword();
 
 
@@ -89,15 +90,16 @@ public class UsersResource {
 
        System.out.println("este  es el email"+user_n.getEmail());
        System.out.println("este  es el password"+user_n.getPassword());
-        System.out.println("este  es el username"+user_n.getName());
+       System.out.println("este  es el username"+user_n.getName());
        System.out.println("este  es el role"+user_n.getRole());
 
         System.out.println("Fuera del if");
 
         if (user_n != null) {
 
-            user.setName(user_n.getName());
+            user.setEmail(user_n.getEmail());
             user.setPassword(user_n.getPassword());
+            user.setName(user_n.getName());
             user.setRole(user_n.getRole());
             System.out.println("Dentro del if");
 
@@ -200,7 +202,7 @@ public class UsersResource {
 
             UsersService usersService = new UsersService(conn);
 
-        UserApp user_n=new UserApp(email, password, name, role);
+        UserApp user_n = new UserApp(email, password, name, role);
         usersService.insertuser(user_n);
 
         System.out.println("Si es aca - Crear usuario");

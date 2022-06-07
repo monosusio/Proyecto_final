@@ -21,7 +21,7 @@ public class UsersService {
             // Executing a SQL query
             System.out.println("=> Listing users...");
             stmt = conn.createStatement();
-            String sql = "SELECT * FROM Usuario";
+            String sql = "SELECT * FROM userapp";
             ResultSet rs = stmt.executeQuery(sql);
 
             // Reading data from result set row by row
@@ -38,8 +38,8 @@ public class UsersService {
 
             // Printing results
             System.out.println("email | Password | name | role ");
-            for (UserApp usuario : usuarioApps) {
-                System.out.println(usuario.toString());
+            for (UserApp usuario2 : usuarioApps) {
+                System.out.println(usuario2.toString());
             }
 
             // Printing total rows
@@ -72,16 +72,16 @@ public class UsersService {
 
     public long insertuser(UserApp user){
 
-        String SQL= "INSERT INTO usuario(email, password, name, role)"+"VALUES(?,?,?)";
+        String SQL= "INSERT INTO userapp(email, password, name, role)"+"VALUES(?,?,?,?)";
         long id=0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
 
             pstmt.setString(1,user.getEmail());
-            pstmt.setString(2, user.getPassword());
+            pstmt.setString(2,user.getPassword());
             pstmt.setString(3,user.getName());
-            pstmt.setString(4, user.getRole());
+            pstmt.setString(4,user.getRole());
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {

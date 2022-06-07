@@ -14,6 +14,9 @@ public class UserApp {
         this.role = role;
     }
 
+    public UserApp() {
+    }
+
     public String getEmail() {
         return email;
     }
