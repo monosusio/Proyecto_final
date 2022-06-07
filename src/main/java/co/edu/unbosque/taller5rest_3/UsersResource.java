@@ -1,20 +1,14 @@
 package co.edu.unbosque.taller5rest_3;
 
 import co.edu.unbosque.taller5rest_3.DTO.ExceptionMessage;
-import co.edu.unbosque.taller5rest_3.DTO.Usuario;
+import co.edu.unbosque.taller5rest_3.DTO.UserApp;
 import co.edu.unbosque.taller5rest_3.services.UsersService;
 import jakarta.ws.rs.*;
-import jakarta.ws.rs.core.Context;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.UriBuilder;
 
-import java.io.IOException;
-import java.net.URI;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Path("/users")
 public class UsersResource {
@@ -36,7 +30,7 @@ public class UsersResource {
 
         Connection conn = null;
 
-        List<Usuario> users = null;
+        List<UserApp> users = null;
 
         try {
 
@@ -76,32 +70,33 @@ public class UsersResource {
     @Path("/found")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response found(Usuario user){
+    public Response found(UserApp user){
  System.out.println("entrando al metodo found");
 
 
         UsersService bass =new UsersService(conn);
-        Usuario n=new Usuario(null,null,null);
-        String username_n=user.getUsername();
+        UserApp n=new UserApp(null,null,null, null);
+        String email_n=user.getEmail()  ;
         String password_n=user.getPassword();
 
 
-        List<Usuario> users = bass.listUsers();
+        List<UserApp> users = bass.listUsers();
 
-        Usuario user_n = users.stream()
-                .filter(u -> u.getUsername().equals(username_n) && u.getPassword().equals(password_n))
+        UserApp user_n = users.stream()
+                .filter(u -> u.getEmail().equals(email_n) && u.getPassword().equals(password_n))
                 .findFirst()
                 .orElse(null);
 
-       System.out.println("este  es el username"+user_n.getUsername());
+       System.out.println("este  es el email"+user_n.getEmail());
        System.out.println("este  es el password"+user_n.getPassword());
+        System.out.println("este  es el username"+user_n.getName());
        System.out.println("este  es el role"+user_n.getRole());
 
         System.out.println("Fuera del if");
 
         if (user_n != null) {
 
-            user.setUsername(user_n.getUsername());
+            user.setName(user_n.getName());
             user.setPassword(user_n.getPassword());
             user.setRole(user_n.getRole());
             System.out.println("Dentro del if");
@@ -197,14 +192,15 @@ public class UsersResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response  createForm(
-            @FormParam("username") String username,
+            @FormParam("email") String email,
             @FormParam("password") String password,
+            @FormParam("name") String name,
             @FormParam("role") String role
             ){
 
             UsersService usersService = new UsersService(conn);
 
-        Usuario user_n=new Usuario(username, password, role);
+        UserApp user_n=new UserApp(email, password, name, role);
         usersService.insertuser(user_n);
 
         System.out.println("Si es aca - Crear usuario");
