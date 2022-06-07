@@ -1,0 +1,73 @@
+body {
+    font-size: 20px;
+    margin: 0;
+
+
+    background-image: url(https://media.admagazine.com/photos/618a6acacc7069ed5077ca7c/master/pass/69052.jpg);
+    background-position: center;
+
+}
+
+header {
+    background-color: #3ba574;
+    margin: 0;
+}
+
+.search {
+    width: 200px;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    font-size: 50px;
+}
+
+#first-heading {
+    color: orange;
+}
+
+p {
+    font-weight: 800;
+}
+
+.selected-item {
+    background-color: red;
+}
+
+.selected-item:hover {
+    background-color: rgb(43, 134, 115);
+}
+
+
+
+ul {
+
+
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    background-color: rgb(255, 0, 234);
+    color: white;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+
+.carousel img {
+    width: 100%;
+}

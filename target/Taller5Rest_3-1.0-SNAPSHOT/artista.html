@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<htm>
+
+    <head>
+        <title>Colección de arte</title>
+
+        <link href="artista.css" rel="stylesheet" />
+    </head>
+
+    <body>
+    <header>
+        <img src="assets/Logo-pintura.png" width="150" height="100" />
+        <div style="text-align: center; width: 1000px">
+            <button onclick='coleccion()'>Crear colección</button>
+
+            <button onclick='pieza()'>Crear pieza</button>
+
+            <a href="index.html"><button>Comprar arte</button></a>
+
+
+        </div>
+    </header>
+
+
+    <script>
+
+        function coleccion() {
+
+            document.getElementById("ex").style.display = 'block';
+            document.getElementById("pi").style.display = 'none';
+            document.getElementById("piven").style.display = 'none';
+
+
+
+        }
+
+        function coleccionAgregar() {
+
+            document.getElementById("ej").style.display = 'block';
+            document.getElementById("pi").style.display = 'none';
+            document.getElementById("piven").style.display = 'none';
+
+        }
+
+        function pieza() {
+
+
+            document.getElementById("ex").style.display = 'none';
+            document.getElementById("ej").style.display = 'none';
+            document.getElementById("piven").style.display = 'none';
+            document.getElementById("pi").style.display = 'block';
+
+        }
+
+        function piezaAgregar() {
+
+            document.getElementById("piven").style.display = 'block';
+            document.getElementById("ex").style.display = 'none';
+            document.getElementById("ej").style.display = 'none';
+
+        }
+
+
+
+    </script>
+
+    <ul id="ex" style="display:none">
+        <a>¿Cual es el nombre de la colección de arte?</a>
+
+
+        <input type="text" id="uname" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
+
+        <div>
+            <button onclick='coleccionAgregar()'>Agregar</button>
+        </div>
+    </ul>
+
+    <ul id="ej" style="display:none ">
+
+        <div>
+            <a>Se ha agregado la colección</a>
+        </div>
+
+
+    </ul>
+
+    <ul id="pi" style="display:none ">
+
+        <div>
+            <a>¿Cual es nombre de la pieza?</a>
+            <input type="text" id="uname" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
+
+            <br>
+            <br>
+
+            <a>¿Cual es el valor de la pieza?</a>
+            <input type="text" id="uname" name="name" placeholder="Digite el precio" maxlength="25" size="30">
+
+            <br>
+            <br>
+
+
+
+            <a>¿A que colección desea agregar la pieza?</a>
+            <select name="opcionColeccion" style="width:250px">
+
+                <option>Seleccione una opción</option>
+
+                <option>Colección 1</option>
+
+                <option>Colección 2</option>
+
+                <option>Colección 3</option>
+
+            </select>
+
+            <br>
+            <br>
+
+            <a>Seleccione una imágen de la pieza</a>
+
+            <br>
+            <br>
+
+            <button onclick='piezaAgregar()'>Poner a la venta</button>
+
+        </div>
+
+        <ul id="piven" style="display:none ">
+
+            <div>
+                <a>Se ha puesto a la venta la pieza</a>
+            </div>
+
+
+        </ul>
+
+
+    </ul>
+
+    </body>
+
+</htm>

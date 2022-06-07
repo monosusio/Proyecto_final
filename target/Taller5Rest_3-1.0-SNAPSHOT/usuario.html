@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<htm>
+    <head>
+        <title>Coleccion de arte</title>
+
+        <link href="usuario.css" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+    <header>
+        <img src="assets/Logo-pintura.png" width="150" height="100">
+
+        <div class="container">
+            <button id="addbtn">
+                agregar dinero
+                <i class="fa fa-thumbs-up"></i>
+            </button>
+            <input type="number" id="input" value="0"
+                   name="">
+
+            <a href="artista.html"><button>Menu Artista</button></a>
+        </div>
+        </td>
+        <script type="text/javascript">
+            let addbtn =document.querySelector('#addbtn');
+            let input = document.querySelector('#input');
+
+            addbtn.addEventListener('click',()=>{
+                input.value=parseInt(input.value)+1;
+                input.style.color = "#052B77";
+            })
+        </script>
+
+    </header>
+
+    <div class="carousel">
+        <img src="assets/Logo-Magistral.png">
+    </div>
+
+    <div style="width: 80%; margin: auto; margin-top: 20px; background-color: rgb(252, 245, 245);">
+        <table>
+            <!--  Parted de arriba de la tabla -->
+            <thead>
+            <th>Avatar del artista</th>
+            <th>Usuario del artista</th>
+            <th>Nombre de la coleccion</th>
+            <th>Precio de la coleccion</th>
+            <th>Comprar</th>
+            <th>Dar Like</th>
+
+            <!-- Perfil de artista 1 -->
+            <tr>
+                <td><img src="https://i.pinimg.com/564x/ed/00/f2/ed00f23259c3e4f8acee84e67106bc56.jpg"width="125" height="75"></td>
+                <td>Monosusio</td>
+                <td>NombreColeccion1</td>
+                <td>5</td>
+                <td><button id="boton1"> Comprar</button></td>
+
+                <script type="text/javascript">
+                    document.getElementById('boton1').onclick = function(){
+                        alert('enhorabuena has comprado la obra');
+                    }
+                </script>
+
+                <td> <div class="container">
+                    <button id="likebtn">
+                        Like
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input1" value="0"
+                           name="">
+                </div>
+                </td>
+                <script type="text/javascript">
+                    let likebtn =document.querySelector('#likebtn');
+                    let input1 = document.querySelector('#input1');
+
+                    likebtn.addEventListener('click',()=>{
+                        input1.value=parseInt(input1.value)+1;
+                        input1.style.color = "#052B77";
+                    })
+                </script>
+            </tr>
+            <!-- Perfil de artista 2 -->
+            <tr >
+                <td ><img src="data:image/jpeg;base64,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"width="125" height="75"></td>
+                <td>Sininox</td>
+                <td>NombreColeccion2</td>
+                <td>10</td>
+                <td><button id="boton2">Comprar</button></td>
+                <script type="text/javascript">
+                    document.getElementById('boton2').onclick = function(){
+                        alert('enhorabuena has comprado la obra');
+                    }
+                </script>
+                <td> <div class="container">
+                    <button id="likebtn3">
+                        Like
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input3" value="0"
+                           name="">
+                </div>
+                </td>
+                <script type="text/javascript">
+                    let likebtn3 =document.querySelector('#likebtn3');
+                    let input3 = document.querySelector('#input3');
+
+                    likebtn3.addEventListener('click',()=>{
+                        input3.value=parseInt(input3.value)+1;
+                        input3.style.color = "#052B77";
+                    })
+                </script>
+            </tr>
+            </tr>
+            <!-- Perfil de artista 3 -->
+            <tr>
+                <td><img src="data:image/jpeg;base64,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"width="125" height="75"></td>
+                <td>Isaac Neetero</td>
+                <td>NombreColeccion3</td>
+                <td>7</td>
+                <td><button id="boton3">Comprar</button></td>
+                <script type="text/javascript">
+                    document.getElementById('boton3').onclick = function(){
+                        alert('enhorabuena has comprado la obra');
+                    }
+                </script>
+                <td> <div class="container">
+                    <button id="likebtn2">
+                        Like
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input2" value="0"
+                           name="">
+                </div>
+                </td>
+                <script type="text/javascript">
+                    let likebtn2 =document.querySelector('#likebtn2');
+                    let input2 = document.querySelector('#input2');
+
+                    likebtn2.addEventListener('click',()=>{
+                        input2.value=parseInt(input2.value)+1;
+                        input2.style.color = "#052B77";
+                    })
+                </script>
+            </tr>
+            </tr>
+            <!-- Perfil de artista 4 -->
+            <tr>
+                <td><img src="https://pbs.twimg.com/profile_images/1171132024591147009/QHUJbhKg_400x400.jpg"width="125" height="75"></td>
+                <td>Guts</td>
+                <td>NombreColeccion4</td>
+                <td>8</td>
+                <td><button id="boton4">Comprar</button></td>
+                <script type="text/javascript">
+                    document.getElementById('boton4').onclick = function(){
+                        alert('enhorabuena has comprado la obra');
+                    }
+                </script>
+                <td> <div class="container">
+                    <button id="likebtn4">
+                        Like
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input4" value="0"
+                           name="">
+                </div>
+                </td>
+                <script type="text/javascript">
+                    let likebtn4 =document.querySelector('#likebtn4');
+                    let input4 = document.querySelector('#input4');
+
+                    likebtn4.addEventListener('click',()=>{
+                        input4.value=parseInt(input4.value)+1;
+                        input4.style.color = "#052B77";
+                    })
+                </script>
+            </tr>
+            <!-- Perfil de artista 5 -->
+            <tr>
+                <td><img src="https://www.pngmart.com/files/11/Dank-Meme-PNG-Free-Download.png"width="125" height="75"></td>
+                <td>El mata gordas</td>
+                <td>NombreColeccion</td>
+                <td>10</td>
+                <td><button id="boton5">Comprar</button></td>
+                <script type="text/javascript">
+                    document.getElementById('boton5').onclick = function(){
+                        alert('enhorabuena has comprado la obra');
+                    }
+                </script>
+                <td> <div class="container">
+                    <button id="likebtn5">
+                        Like
+                        <i class="fa fa-thumbs-up"></i>
+                    </button>
+                    <input type="number" id="input5" value="0"
+                           name="">
+                </div>
+                </td>
+                <script type="text/javascript">
+                    let likebtn5 =document.querySelector('#likebtn5');
+                    let input5 = document.querySelector('#input5');
+
+                    likebtn5.addEventListener('click',()=>{
+                        input5.value=parseInt(input5.value)+1;
+                        input5.style.color = "#052B77";
+                    })
+                </script>
+            </tr>
+
+            </thead>
+    </div>
+    </body>
+</htm>

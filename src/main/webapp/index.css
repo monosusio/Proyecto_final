@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:  border-box;
+
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(https://cdn.pixabay.com/photo/2021/04/13/23/25/paisaje-6176882_1280.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: aliceblue;
+
+}
+
+.contenedor{
+
+    width: 90%;
+    height: 90vh;
+    display: flex;
+    justify-content: space-around;
+    transition: all .5s ease-out;
+}
+
+.Bienvenida{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.Mensaje{
+    padding: 1rem;
+
+}
+
+.Mensaje h2{
+    font-size: 1.7rem;
+
+}
+
+.Mensaje button{
+
+    padding: 1rem;
+    font-weight: 400;
+    background-color: rgb(177, 42, 211);
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: .9rem;
+    margin-top: 2rem;
+    transition: all .3s ease-in;
+    color: aliceblue;
+}
+
+.Mensaje button:hover{
+    background-color: rgb(255, 0, 255);
+}
+
+.formulario{
+    width: 400px;
+    padding: 1rem;
+    margin: 2rem;
+    background-color: rgba(184, 12, 83, 0.602);
+    text-align: center;
+}
+
+.CrearCuenta{
+    padding: 2.7rem 0;
+    font-size: 1.7rem;
+}
+
+.CuentaGratis{
+
+    padding: 2rem 0;
+}
+
+.formulario input{
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-bottom: aliceblue ;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: aliceblue;
+}
+
+.formulario input[type="button"]{
+    width: 60%;
+    margin: auto;
+    border: solid thin white;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: aliceblue;
+    font-weight: 600;
+    margin-top: 3rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: rgb(14, 199, 206);
+}
+
+.IniciarSesion{
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.IniciarSesion.active{
+    opacity: 1;
+    visibility: visible;
+}
+
+.Registrarse.active{
+    opacity: 0;
+    visibility: hidden;
+}

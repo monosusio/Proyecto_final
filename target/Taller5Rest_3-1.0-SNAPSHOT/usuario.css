@@ -1,0 +1,26 @@
+body {
+    font-size: 20px;
+    margin: 0;
+
+    background-image: url(https://media.admagazine.com/photos/618a6acacc7069ed5077ca7c/master/pass/69052.jpg);
+    background-position: center;
+
+
+
+    background-color: rgb(83, 83, 83);
+}
+
+header {
+    background-color: #3ba574;
+}
+.carousel img {
+    width: 100%;
+}
+table {
+    width: 100%;
+    border: 2px solid #000;
+}
+th, td {
+    text-align: center;
+    border: 2px solid #000;
+}
