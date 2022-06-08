@@ -36,6 +36,7 @@ formulario.addEventListener("submit",function(e){
             localStorage.setItem("role",dato["role"]);
 
 
+
             console.log("cambipo nuevo en javascript");
             console.log("Si sirve esta piroba mrda")
 

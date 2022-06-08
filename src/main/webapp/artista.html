@@ -39,6 +39,8 @@
             document.getElementById("ej").style.display = 'block';
             document.getElementById("pi").style.display = 'none';
             document.getElementById("piven").style.display = 'none';
+            var email = localStorage.getItem("email");
+            console.log("Este es el email para la coleccion: "+email);
 
         }
 
@@ -64,30 +66,33 @@
 
     </script>
 
-    <ul id="ex" style="display:none">
+    <form id="ex"  action="./api/collection/form" method="post" class="formulario2">
         <a>¿Cual es el nombre de la colección de arte?</a>
 
 
-        <input type="text" id="uname" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
+        Name: <input type="text" id="name" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
 
         <br>
         <br>
 
         <a>Digite la descripción de su coleccion</a>
 
-        <input type="text" id="uname" name="name" placeholder="Digite la descripcion" maxlength="250" size="30" >
+        Description: <input type="text" id="description" name="description" placeholder="Digite la descripcion" maxlength="250" size="30" >
 
         <br>
         <br>
+
+
 
         <a>Escriba la categoria de su coleccion</a>
 
-        <input type="text" id="uname" name="name" placeholder="Categoria" maxlength="25" size="30" >
+        Category: <input type="text" id="category" name="category" placeholder="Categoria" maxlength="25" size="30" >
 
         <div>
-            <button onclick='coleccionAgregar()'>Agregar</button>
+            <input type="submit" type="button" value="AgregarColeccion" onclick='coleccionAgregar()'>
+
         </div>
-    </ul>
+    </form>
 
     <ul id="ej" style="display:none ">
 
@@ -98,17 +103,17 @@
 
     </ul>
 
-    <ul id="pi" style="display:none ">
+    <ul id="pi" style="display:none " action="./api/artist/form" method="post" class="formulario">
 
         <div>
             <a>¿Cual es nombre de la pieza?</a>
-            <input type="text" id="uname" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
+            <input type="text" id="nameArt" name="nameArt" placeholder="Digite el nombre" maxlength="25" size="30">
 
             <br>
             <br>
 
             <a>¿Cual es el valor de la pieza?</a>
-            <input type="text" id="uname" name="name" placeholder="Digite el precio" maxlength="25" size="30">
+            <input type="text" id="price" name="price" placeholder="Digite el precio" maxlength="25" size="30">
 
             <br>
             <br>

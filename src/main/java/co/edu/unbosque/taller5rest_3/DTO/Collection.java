@@ -2,27 +2,25 @@ package co.edu.unbosque.taller5rest_3.DTO;
 
 public class Collection {
 
-    private Integer co_id;
+    //private Integer co_id;
     private String name;
     private String description;
     private String category;
     private String email;
 
-    public Collection(Integer co_id, String name, String description, String category, String email) {
-        this.co_id = co_id;
+    public Collection(String name, String description, String category, String email) {
+
         this.name = name;
         this.description = description;
         this.category = category;
         this.email = email;
     }
 
-    public Integer getCo_id() {
-        return co_id;
+    public Collection(){
+
     }
 
-    public void setCo_id(Integer co_id) {
-        this.co_id = co_id;
-    }
+
 
     public String getName() {
         return name;

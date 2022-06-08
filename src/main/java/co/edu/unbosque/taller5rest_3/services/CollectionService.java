@@ -16,7 +16,7 @@ public class CollectionService {
     public List<Collection> collectionList() {
         Statement stmt = null;
 
-        List<Collection> collection = new ArrayList<Collection>();
+        List<Collection> collections = new ArrayList<Collection>();
 
         try {
             // Executing a SQL query
@@ -28,24 +28,24 @@ public class CollectionService {
             // Reading data from result set row by row
             while (rs.next()) {
                 // Extracting row values by column name
-                Integer co_id = rs.getInt("co_id");
+                //Integer co_id = rs.getInt("co_id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 String category = rs.getString("category");
                 String email = rs.getString("email");
 
                 // Creating a new UserApp class instance and adding it to the array list
-               collection.add(new Collection(co_id, name,description,category,email));
+                collections.add(new Collection(name,description,category,email));
             }
 
             // Printing results
             System.out.println("email | Password | name | role ");
-            for (Collection collecion : collection) {
+            for (Collection collecion : collections) {
                 System.out.println(collecion.toString());
             }
 
             // Printing total rows
-            System.out.println("Total of users retrieved: " + collection.size() + "\n");
+            System.out.println("Total of users retrieved: " + collections.size() + "\n");
 
             // Closing resources
             rs.close();
@@ -61,30 +61,30 @@ public class CollectionService {
             }
         }
 
-        return collection;
+        return collections;
     }
 
     public Connection connect() throws SQLException {
         String DB_URL = "jdbc:postgresql://localhost/postgres";
         String USER = "postgres";
-        String PASS = "monosusio";
+        String PASS = "Santuario11";
 
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 
-    public long insertuser(Collection coleccion){
+    public long insertCollection(Collection coleccion){
 
-        String SQL= "INSERT INTO collection(co_id, name,description,category,email)"+"VALUES(?,?,?,?,?)";
+        String SQL= "INSERT INTO collection(name, description, category, email)"+"VALUES(?,?,?,?)";
         long id=0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
 
-            pstmt.setInt(1,coleccion.getCo_id());
-            pstmt.setString(2,coleccion.getName());
-            pstmt.setString(3,coleccion.getDescription());
-            pstmt.setString(4,coleccion.getCategory());
-            pstmt.setString(5,coleccion.getEmail());
+            //pstmt.setInt(1,coleccion.getCo_id());
+            pstmt.setString(1,coleccion.getName());
+            pstmt.setString(2,coleccion.getDescription());
+            pstmt.setString(3,coleccion.getCategory());
+            pstmt.setString(4,coleccion.getEmail());
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
