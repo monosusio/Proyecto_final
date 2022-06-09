@@ -8,14 +8,16 @@ formularioCollection.addEventListener("submit",function(e){
     console.log("esta es la category "+document.getElementById("category").value);
     console.log("esta es la descripcion "+document.getElementById("description").value);
     console.log("este es el email "+localStorage.getItem("email"));
+
     var data = {
         "name": document.getElementById("name").value,
         "category": document.getElementById("category").value,
         "description": document.getElementById("description").value,
-
        "email":  localStorage.getItem("email"),
 
     };
+
+    console.log(data);
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
