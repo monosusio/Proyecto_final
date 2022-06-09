@@ -28,14 +28,14 @@ public class CollectionService {
             // Reading data from result set row by row
             while (rs.next()) {
                 // Extracting row values by column name
-                //Integer co_id = rs.getInt("co_id");
+                Integer co_id = rs.getInt("co_id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 String category = rs.getString("category");
                 String email = rs.getString("email");
 
                 // Creating a new UserApp class instance and adding it to the array list
-                collections.add(new Collection(name,description,category,email));
+                collections.add(new Collection(co_id, name,description,category,email));
             }
 
             // Printing results
@@ -74,17 +74,17 @@ public class CollectionService {
 
     public void insertCollection(Collection coleccion){
 
-        String SQL= "INSERT INTO collection(name, description, category, email)"+"VALUES(?,?,?,?)";
+        String SQL= "INSERT INTO collection(co_id, name, description, category, email)"+"VALUES(?,?,?,?,?)";
         long id=0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
 
-            //pstmt.setInt(1,coleccion.getCo_id());
-            pstmt.setString(1,coleccion.getName());
-            pstmt.setString(2,coleccion.getDescription());
-            pstmt.setString(3,coleccion.getCategory());
-            pstmt.setString(4,coleccion.getEmail());
+            pstmt.setInt(1,coleccion.getCo_id());
+            pstmt.setString(2,coleccion.getName());
+            pstmt.setString(3,coleccion.getDescription());
+            pstmt.setString(4,coleccion.getCategory());
+            pstmt.setString(5,coleccion.getEmail());
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {

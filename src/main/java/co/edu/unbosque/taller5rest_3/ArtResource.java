@@ -1,7 +1,9 @@
 package co.edu.unbosque.taller5rest_3;
 
 import co.edu.unbosque.taller5rest_3.DTO.Art;
+import co.edu.unbosque.taller5rest_3.DTO.Collection;
 import co.edu.unbosque.taller5rest_3.services.ArtService;
+import co.edu.unbosque.taller5rest_3.services.CollectionService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -15,6 +17,9 @@ import java.util.List;
 @Path("/art")
 public class ArtResource {
 
+    private ArtService artService;
+    private Art art;
+
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
@@ -23,6 +28,8 @@ public class ArtResource {
 
 
     public ArtResource() throws SQLException {
+        artService = new ArtService(conn);
+        art = new Art();
     }
 
 
@@ -44,12 +51,6 @@ public class ArtResource {
             ArtService artService = new ArtService(conn);
             art = artService.ArtList();
 
-            //PetsService petsService = new PetsService(conn);
-            //petsService.countBySpecies("dog");
-
-            //OwnersService ownersService = new OwnersService(conn);
-            //ownersService.updateOwner(new Owner(6697, null, "Pepe"));
-
             conn.close();
         } catch (SQLException se) {
             se.printStackTrace(); // Handling errors from database
@@ -68,28 +69,33 @@ public class ArtResource {
         return Response.ok().entity(art).build();
     }
 
-
     @POST
-    @Path("/form")
+    @Path("/agregar")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createArt(
-            //@FormParam("co_id") Integer co_id,
-            @FormParam("name") String name,
-            @FormParam("price") float price,
-            @FormParam("imagePath") String imagePath,
-            @FormParam("forSale") boolean forSale,
-            @FormParam("co_id") Integer co_id
-    ){
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response crearArte(Art art){
 
-        ArtService artService = new ArtService(conn);
-        Art art_n = new Art(name,price,imagePath, forSale, co_id);
-        artService.insertArt(art_n);
+        int random = (int) (Math.random()*(1000-1)) + 1;
 
-        System.out.println("Si es aca - Crear Art");
+        art.setArt_id(random);
+        System.out.println("para por la api de arte (fuera del for)");
 
-        return null;
+        /*for (int i = 0; i < artService.ArtList().size(); i ++) {
+            if (artService.ArtList().get(i).getArt_id() != random) {*/
 
+                System.out.println("art_ID: " + art.getArt_id());
+                System.out.println("nombre: " + art.getName());
+                System.out.println("precio: " + art.getPrice());
+                System.out.println("booleano: " + art.isForSale());
+                System.out.println("codigo de la coleccion " + art.getCo_id());
+                artService.insertArt(art);
+                System.out.println("para por la api de arte");
+
+           // }
+       // }
+        return Response.ok()
+                .entity(art)
+                .build();
     }
 
 }

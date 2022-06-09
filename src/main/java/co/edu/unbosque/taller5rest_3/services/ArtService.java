@@ -28,7 +28,7 @@ public class ArtService {
             // Reading data from result set row by row
             while (rs.next()) {
                 // Extracting row values by column name
-                //Integer co_id = rs.getInt("co_id");
+                Integer art_id = rs.getInt("art_id");
                 String name = rs.getString("name");
                 float price = rs.getFloat("price");
                 String imagePath = rs.getString("imagePath");
@@ -36,11 +36,11 @@ public class ArtService {
                 int co_id = rs.getInt("co_id");
 
                 // Creating a new UserApp class instance and adding it to the array list
-                arts.add(new Art(name,price,imagePath, forSale, co_id));
+                arts.add(new Art(art_id, name,price,imagePath, forSale, co_id));
             }
 
             // Printing results
-            System.out.println("name | price | imagePath | forSale | co_id ");
+            System.out.println("artname | price | imagePath | forSale | co_id ");
             for (Art art : arts) {
                 System.out.println(art.toString());
             }
@@ -73,20 +73,20 @@ public class ArtService {
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 
-    public long insertArt(Art art){
+    public void insertArt(Art art){
 
-        String SQL= "INSERT INTO art(name,price,imagePath, forSale, co_id)"+"VALUES(?,?,?,?,?)";
+        String SQL= "INSERT INTO art(art_id, name, price, imagePath, forSale, co_id)"+"VALUES(?,?,?,?,?,?)";
         long id=0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
 
-            //pstmt.setInt(1,coleccion.getCo_id());
-            pstmt.setString(1,art.getName());
-            pstmt.setFloat(2,art.getPrice());
-            pstmt.setString(3,art.getImagePath());
-            pstmt.setBoolean(4,art.isForSale());
-            pstmt.setInt(5,art.getCo_id());
+            pstmt.setInt(1,art.getArt_id());
+            pstmt.setString(2,art.getName());
+            pstmt.setFloat(3,art.getPrice());
+            pstmt.setString(4,art.getImagePath());
+            pstmt.setBoolean(5,art.isForSale());
+            pstmt.setInt(6,art.getCo_id());
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
@@ -102,7 +102,6 @@ public class ArtService {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return id;
 
     }
 

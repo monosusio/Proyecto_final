@@ -10,6 +10,7 @@ formularioCollection.addEventListener("submit",function(e){
     console.log("este es el email "+localStorage.getItem("email"));
 
     var data = {
+
         "name": document.getElementById("name").value,
         "category": document.getElementById("category").value,
         "description": document.getElementById("description").value,

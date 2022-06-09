@@ -16,7 +16,7 @@ import java.util.List;
 @Path("/collection")
 public class CollectioResource {
 
-    private CollectionService col;
+    private CollectionService collectionService;
     private Collection colecction;
 
     static final String JDBC_DRIVER = "org.postgresql.Driver";
@@ -27,7 +27,7 @@ public class CollectioResource {
 
 
     public CollectioResource() throws SQLException {
-        col = new CollectionService(conn);
+        collectionService = new CollectionService(conn);
     }
 
 
@@ -74,7 +74,7 @@ public class CollectioResource {
     }
 
 
-    @POST
+   /* @POST
     @Path("/form")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -94,7 +94,7 @@ public class CollectioResource {
 
         return null;
 
-    }
+    }*/
 
     @POST
     @Path("/agregar")
@@ -103,15 +103,22 @@ public class CollectioResource {
     public Response crearcoleccion(Collection coleccion){
 
 
-        //coleccion.setColecctionid(col.listacolection().size()+1);
-        //System.out.println("esta es la cantidad de colecciones registradas en la base de datos "+col.listacolection().size());
-        //System.out.println("este es le coleccition id "+coleccion.getColecctionid());
-        System.out.println("este es el nombre "+coleccion.getName());
-        System.out.println("este es la descripcion "+coleccion.getDescription());
-        System.out.println("este es la category "+coleccion.getCategory());
-        System.out.println("este es le email "+coleccion.getEmail());
-        col.insertCollection(coleccion);
-        System.out.println("se esta pasando por la api de coleccion");
+        int random = (int) (Math.random()*(1000-1)) + 1;
+
+        coleccion.setCo_id(random);
+
+        for (int i = 0; i < collectionService.collectionList().size(); i ++) {
+            if(collectionService.collectionList().get(i).getCo_id() != random){
+
+                System.out.println("id: "+coleccion.getCo_id());
+                System.out.println("nombre: "+coleccion.getName());
+                System.out.println("descripcion: "+coleccion.getDescription());
+                System.out.println("category: "+coleccion.getCategory());
+                System.out.println("email: "+coleccion.getEmail());
+                collectionService.insertCollection(coleccion);
+            }
+
+        }
         return Response.ok()
                 .entity(coleccion)
                 .build();

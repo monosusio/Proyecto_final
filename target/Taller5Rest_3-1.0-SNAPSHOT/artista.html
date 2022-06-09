@@ -68,7 +68,7 @@
 
     </script>
 
-    <div class="contenedor IniciarSesion">
+    <div class="contenedor Coleccion">
 
     <form id="ex"  class="formulario2">
         <a>¿Cual es el nombre de la colección de arte?</a>
@@ -106,29 +106,24 @@
 
     </ul>
 
-    <ul id="pi" style="display:none " action="./api/artist/form" method="post" class="formulario">
+    <div class="contenedor Pieza">
+    <form id="pi" class="formulario3">
 
         <div>
             <a>¿Cual es nombre de la pieza?</a>
             <input type="text" id="nameArt" name="nameArt" placeholder="Digite el nombre" maxlength="25" size="30">
-
             <br>
             <br>
-
             <a>¿Cual es el valor de la pieza?</a>
             <input type="text" id="price" name="price" placeholder="Digite el precio" maxlength="25" size="30">
-
             <br>
             <br>
-
-
-
             <a>¿A que colección desea agregar la pieza?</a>
-            <select name="opcionColeccion" style="width:250px">
+            <select name="co_id" style="width:250px" id="co_id" >
 
                 <option>Seleccione una opción</option>
 
-                <option>Colección 1</option>
+                <option>359</option>
 
                 <option>Colección 2</option>
 
@@ -144,7 +139,7 @@
             <br>
             <br>
 
-            <button onclick='piezaAgregar()'>Poner a la venta</button>
+            <input type="submit" type="button" value="Poner a la venta" onclick='piezaAgregar()'>
 
         </div>
 
@@ -158,8 +153,10 @@
         </ul>
 
 
-    </ul>
+    </form>
+        <script src="art.js"></script>
 
+    </div>
     </body>
 
 </htm>
