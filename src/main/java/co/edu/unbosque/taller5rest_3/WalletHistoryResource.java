@@ -1,9 +1,10 @@
 package co.edu.unbosque.taller5rest_3;
 
-import co.edu.unbosque.taller5rest_3.DTO.ExceptionMessage;
 import co.edu.unbosque.taller5rest_3.DTO.Collection;
+import co.edu.unbosque.taller5rest_3.DTO.WalletHistory;
 import co.edu.unbosque.taller5rest_3.services.CollectionService;
 import co.edu.unbosque.taller5rest_3.services.UsersService;
+import co.edu.unbosque.taller5rest_3.services.WalletHistoryService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -13,8 +14,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-@Path("/collection")
-public class CollectioResource {
+@Path("/wallethistory")
+public class WalletHistoryResource {
 
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
@@ -23,7 +24,7 @@ public class CollectioResource {
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
-    public CollectioResource() throws SQLException {
+    public WalletHistoryResource() throws SQLException {
     }
 
 
@@ -33,7 +34,7 @@ public class CollectioResource {
 
         Connection conn = null;
 
-        List<Collection> collection = null;
+        List<WalletHistory> walletHistory = null;
 
         try {
 
@@ -42,8 +43,8 @@ public class CollectioResource {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            CollectionService collectionService = new CollectionService(conn);
-            collection = collectionService.collectionList();
+            WalletHistoryService walletHistoryService = new WalletHistoryService(conn);
+            walletHistory = walletHistoryService.walletHistoryList();
 
             //PetsService petsService = new PetsService(conn);
             //petsService.countBySpecies("dog");
@@ -66,7 +67,7 @@ public class CollectioResource {
         }
 
 
-        return Response.ok().entity(collection).build();
+        return Response.ok().entity(walletHistory).build();
     }
 
 
@@ -74,24 +75,21 @@ public class CollectioResource {
     @Path("/form")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createCollection(
+    public Response createWalletHistory(
             //@FormParam("co_id") Integer co_id,
-            @FormParam("name") String name,
-            @FormParam("description") String description,
-            @FormParam("category") String category,
-            @FormParam("email") String email
+            @FormParam("email") String email,
+            @FormParam("type") String type,
+            @FormParam("fcoins") float fcoins,
+            @FormParam("registeredAt") String registeredAt
     ){
 
-        CollectionService collectionService = new CollectionService(conn);
-        Collection coleccion_n = new Collection(name,description,category,email);
-        collectionService.insertCollection(coleccion_n);
+        WalletHistoryService walletHistoryService = new WalletHistoryService(conn);
+        WalletHistory walletHistory_n = new WalletHistory(email,type,fcoins,registeredAt);
+        walletHistoryService.insertWalletHistory(walletHistory_n);
 
         System.out.println("Si es aca - Crear collecion");
 
         return null;
 
     }
-
-
-
 }
