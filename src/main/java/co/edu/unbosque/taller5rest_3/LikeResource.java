@@ -1,7 +1,7 @@
 package co.edu.unbosque.taller5rest_3;
 
-import co.edu.unbosque.taller5rest_3.DTO.Art;
-import co.edu.unbosque.taller5rest_3.services.ArtService;
+import co.edu.unbosque.taller5rest_3.DTO.Likes;
+import co.edu.unbosque.taller5rest_3.services.LikeService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -11,9 +11,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-
-@Path("/art")
-public class ArtResource {
+@Path("/likes")
+public class LikeResource {
 
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
@@ -22,7 +21,7 @@ public class ArtResource {
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
-    public ArtResource() throws SQLException {
+    public LikeResource() throws SQLException {
     }
 
 
@@ -32,7 +31,7 @@ public class ArtResource {
 
         Connection conn = null;
 
-        List<Art> art = null;
+        List<Likes> like = null;
 
         try {
 
@@ -41,8 +40,8 @@ public class ArtResource {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            ArtService artService = new ArtService(conn);
-            art = artService.ArtList();
+            LikeService likeService = new LikeService(conn);
+            like = likeService.likesList();
 
             //PetsService petsService = new PetsService(conn);
             //petsService.countBySpecies("dog");
@@ -65,7 +64,7 @@ public class ArtResource {
         }
 
 
-        return Response.ok().entity(art).build();
+        return Response.ok().entity(like).build();
     }
 
 
@@ -73,20 +72,18 @@ public class ArtResource {
     @Path("/form")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createArt(
+    public Response createLike(
             //@FormParam("co_id") Integer co_id,
-            @FormParam("name") String name,
-            @FormParam("price") float price,
-            @FormParam("imagePath") String imagePath,
-            @FormParam("forSale") boolean forSale,
-            @FormParam("co_id") Integer co_id
+            @FormParam("name") Integer art_id,
+            @FormParam("description") String email,
+            @FormParam("category") String registeredAt
     ){
 
-        ArtService artService = new ArtService(conn);
-        Art art_n = new Art(name,price,imagePath, forSale, co_id);
-        artService.insertArt(art_n);
+        LikeService likesService = new LikeService(conn);
+        Likes likes_n = new Likes(art_id,email,registeredAt);
+        likesService.insertLikes(likes_n);
 
-        System.out.println("Si es aca - Crear Art");
+        System.out.println("Si es aca - Crear Like");
 
         return null;
 
