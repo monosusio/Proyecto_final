@@ -2,26 +2,22 @@ package co.edu.unbosque.taller5rest_3.DTO;
 
 public class WalletHistory {
 
-    private Integer wh_id;
+
     private String email;
     private String type;
     private float fcoins;
     private String registeredAt;
 
-    public WalletHistory(Integer wh_id, String email, String type, float fcoins, String registeredAt) {
-        this.wh_id = wh_id;
+    public WalletHistory(String email, String type, float fcoins, String registeredAt) {
+
         this.email = email;
         this.type = type;
         this.fcoins = fcoins;
         this.registeredAt = registeredAt;
     }
 
-    public Integer getWh_id() {
-        return wh_id;
-    }
+    public WalletHistory(){
 
-    public void setWh_id(Integer wh_id) {
-        this.wh_id = wh_id;
     }
 
     public String getEmail() {

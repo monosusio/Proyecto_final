@@ -1,24 +1,16 @@
 package co.edu.unbosque.taller5rest_3.DTO;
 
 public class Likes {
-    private Integer like_id;
+
     private Integer art_id;
     private String email;
     private String registeredAt;
 
-    public Likes(Integer like_id, Integer art_id, String email, String registeredAt) {
-        this.like_id = like_id;
+    public Likes(Integer art_id, String email, String registeredAt) {
+
         this.art_id = art_id;
         this.email = email;
         this.registeredAt = registeredAt;
-    }
-
-    public Integer getLike_id() {
-        return like_id;
-    }
-
-    public void setLike_id(Integer like_id) {
-        this.like_id = like_id;
     }
 
     public Integer getArt_id() {

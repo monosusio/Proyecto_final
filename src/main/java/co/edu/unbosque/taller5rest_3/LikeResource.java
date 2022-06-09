@@ -1,9 +1,7 @@
 package co.edu.unbosque.taller5rest_3;
 
-import co.edu.unbosque.taller5rest_3.DTO.ExceptionMessage;
-import co.edu.unbosque.taller5rest_3.DTO.Collection;
-import co.edu.unbosque.taller5rest_3.services.CollectionService;
-import co.edu.unbosque.taller5rest_3.services.UsersService;
+import co.edu.unbosque.taller5rest_3.DTO.Likes;
+import co.edu.unbosque.taller5rest_3.services.LikeService;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -13,17 +11,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-@Path("/collection")
-public class CollectioResource {
+@Path("/likes")
+public class LikeResource {
 
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "Santuario11";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
-    public CollectioResource() throws SQLException {
+    public LikeResource() throws SQLException {
     }
 
 
@@ -33,7 +31,7 @@ public class CollectioResource {
 
         Connection conn = null;
 
-        List<Collection> collection = null;
+        List<Likes> like = null;
 
         try {
 
@@ -42,8 +40,8 @@ public class CollectioResource {
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
-            CollectionService collectionService = new CollectionService(conn);
-            collection = collectionService.collectionList();
+            LikeService likeService = new LikeService(conn);
+            like = likeService.likesList();
 
             //PetsService petsService = new PetsService(conn);
             //petsService.countBySpecies("dog");
@@ -66,7 +64,7 @@ public class CollectioResource {
         }
 
 
-        return Response.ok().entity(collection).build();
+        return Response.ok().entity(like).build();
     }
 
 
@@ -74,24 +72,21 @@ public class CollectioResource {
     @Path("/form")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createCollection(
+    public Response createLike(
             //@FormParam("co_id") Integer co_id,
-            @FormParam("name") String name,
-            @FormParam("description") String description,
-            @FormParam("category") String category,
-            @FormParam("email") String email
+            @FormParam("name") Integer art_id,
+            @FormParam("description") String email,
+            @FormParam("category") String registeredAt
     ){
 
-        CollectionService collectionService = new CollectionService(conn);
-        Collection coleccion_n = new Collection(name,description,category,email);
-        collectionService.insertCollection(coleccion_n);
+        LikeService likesService = new LikeService(conn);
+        Likes likes_n = new Likes(art_id,email,registeredAt);
+        likesService.insertLikes(likes_n);
 
-        System.out.println("Si es aca - Crear collecion");
+        System.out.println("Si es aca - Crear Like");
 
         return null;
 
     }
-
-
 
 }

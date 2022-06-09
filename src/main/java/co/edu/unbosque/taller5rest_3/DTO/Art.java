@@ -2,15 +2,13 @@ package co.edu.unbosque.taller5rest_3.DTO;
 
 public class Art {
 
-    private Integer art_id;
     private String name;
     private float price;
     private String imagePath;
     private boolean forSale;
     private Integer co_id;
 
-    public Art(Integer art_id, String name, float price, String imagePath, boolean forSale, Integer co_id) {
-        this.art_id = art_id;
+    public Art(String name, float price, String imagePath, boolean forSale, Integer co_id) {
         this.name = name;
         this.price = price;
         this.imagePath = imagePath;
@@ -18,12 +16,7 @@ public class Art {
         this.co_id = co_id;
     }
 
-    public Integer getArt_id() {
-        return art_id;
-    }
-
-    public void setArt_id(Integer art_id) {
-        this.art_id = art_id;
+    public Art() {
     }
 
     public String getName() {
