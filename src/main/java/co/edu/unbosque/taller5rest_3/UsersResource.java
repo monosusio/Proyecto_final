@@ -16,7 +16,7 @@ public class UsersResource {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "monosusio";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
