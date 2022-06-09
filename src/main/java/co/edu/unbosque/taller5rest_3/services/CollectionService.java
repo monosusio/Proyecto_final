@@ -72,7 +72,7 @@ public class CollectionService {
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 
-    public long insertCollection(Collection coleccion){
+    public void insertCollection(Collection coleccion){
 
         String SQL= "INSERT INTO collection(name, description, category, email)"+"VALUES(?,?,?,?)";
         long id=0;
@@ -100,7 +100,6 @@ public class CollectionService {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return id;
 
     }
 

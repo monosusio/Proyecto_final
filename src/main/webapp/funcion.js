@@ -4,7 +4,14 @@ var formularioCollection = document.getElementById("ex");
 formularioCollection.addEventListener("submit",function(e){
     e.preventDefault();
 
+    console.log("este es el titulo "+document.getElementById("name").value);
+    console.log("esta es la category "+document.getElementById("category").value);
+    console.log("esta es la descripcion "+document.getElementById("description").value);
+    console.log("este es el email "+localStorage.getItem("email"));
     var data = {
+        "name": document.getElementById("name").value,
+        "category": document.getElementById("category").value,
+        "description": document.getElementById("description").value,
 
        "email":  localStorage.getItem("email"),
 
@@ -13,7 +20,7 @@ formularioCollection.addEventListener("submit",function(e){
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Access-Control-Allow-Origin", "*");
-    var newdata= fetch("./api/collection/form",{method: "POST",
+    fetch("./api/collection/agregar",{method: "POST",
         body: JSON.stringify(data),
         headers: myHeaders
     })
@@ -21,12 +28,6 @@ formularioCollection.addEventListener("submit",function(e){
             res.json()
         )
         .then(dato => {
-
-            localStorage.setItem("email",dato["email"]);
-
-
-            console.log("Si sirve esta piroba mrda en el fetch")
-
 
             console.log("Este es el email del que le corresponde a la coleccion: " + dato["email"]);
 

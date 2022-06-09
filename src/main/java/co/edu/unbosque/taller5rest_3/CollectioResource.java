@@ -16,6 +16,9 @@ import java.util.List;
 @Path("/collection")
 public class CollectioResource {
 
+    private CollectionService col;
+    private Collection colecction;
+
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
@@ -90,6 +93,25 @@ public class CollectioResource {
 
         return null;
 
+    }
+
+    @POST
+    @Path("/agregar")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response crearcoleccion(Collection coleccion){
+        //coleccion.setColecctionid(col.listacolection().size()+1);
+        //System.out.println("esta es la cantidad de colecciones registradas en la base de datos "+col.listacolection().size());
+        //System.out.println("este es le coleccition id "+coleccion.getColecctionid());
+        System.out.println("este es el nombre "+coleccion.getName());
+        System.out.println("este es la descripcion "+coleccion.getDescription());
+        System.out.println("este es la category "+coleccion.getCategory());
+        System.out.println("este es le email "+coleccion.getEmail());
+        col.insertCollection(coleccion);
+        System.out.println("se esta pasando por la api de coleccion");
+        return Response.ok()
+                .entity(coleccion)
+                .build();
     }
 
 
