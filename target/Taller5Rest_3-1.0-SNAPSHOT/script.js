@@ -51,7 +51,7 @@ formulario.addEventListener("submit",function(e){
                 window.location.href = "http://localhost:8080/Taller5Rest_3-1.0-SNAPSHOT/artista.html";
                 console.log("Es Artist");
             }else if(dato["role"] === "Customer"){
-                window.location.href = "http://localhost:8080/Taller5Rest_3-1.0-SNAPSHOT/usuario.html";
+                window.location.href = "http://localhost:8080/Taller5Rest_3-1.0-SNAPSHOT/comprador.html";
                 console.log("Es Customer");
 
             }
