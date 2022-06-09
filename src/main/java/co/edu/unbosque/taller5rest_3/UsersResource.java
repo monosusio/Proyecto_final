@@ -88,14 +88,16 @@ public class UsersResource {
                 .findFirst()
                 .orElse(null);
 
-       System.out.println("este  es el email"+user_n.getEmail());
-       System.out.println("este  es el password"+user_n.getPassword());
-       System.out.println("este  es el username"+user_n.getName());
-       System.out.println("este  es el role"+user_n.getRole());
+
 
         System.out.println("Fuera del if");
 
         if (user_n != null) {
+
+            System.out.println("este  es el email"+user_n.getEmail());
+            System.out.println("este  es el password"+user_n.getPassword());
+            System.out.println("este  es el username"+user_n.getName());
+            System.out.println("este  es el role"+user_n.getRole());
 
             user.setEmail(user_n.getEmail());
             user.setPassword(user_n.getPassword());
@@ -108,11 +110,13 @@ public class UsersResource {
                     .build();
 
         } else {
-            System.out.println("En el Else");
+            System.out.println("En el Else de que no encontro el usuario");
 
             return Response.status(404)
                     .entity(new ExceptionMessage(404, "User not found"))
                     .build();
+
+
         }
 
     }

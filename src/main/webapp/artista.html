@@ -39,6 +39,8 @@
             document.getElementById("ej").style.display = 'block';
             document.getElementById("pi").style.display = 'none';
             document.getElementById("piven").style.display = 'none';
+            document.getElementById("ej").accessKey.toUpperCase();
+
             var email = localStorage.getItem("email");
             console.log("Este es el email para la coleccion: "+email);
 
@@ -66,33 +68,34 @@
 
     </script>
 
+    <div class="contenedor IniciarSesion">
+
     <form id="ex"  action="./api/collection/form" method="post" class="formulario2">
         <a>¿Cual es el nombre de la colección de arte?</a>
 
 
-        Name: <input type="text" id="name" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
+        <input type="text" id="name" name="name" placeholder="Digite el nombre" maxlength="25" size="30">
 
         <br>
         <br>
 
         <a>Digite la descripción de su coleccion</a>
 
-        Description: <input type="text" id="description" name="description" placeholder="Digite la descripcion" maxlength="250" size="30" >
+        <input type="text" id="description" name="description" placeholder="Digite la descripcion" maxlength="250" size="30" >
 
         <br>
         <br>
-
-
-
         <a>Escriba la categoria de su coleccion</a>
-
-        Category: <input type="text" id="category" name="category" placeholder="Categoria" maxlength="25" size="30" >
+        <input type="text" id="category" name="category" placeholder="Categoria" maxlength="25" size="30" >
 
         <div>
             <input type="submit" type="button" value="AgregarColeccion" onclick='coleccionAgregar()'>
 
         </div>
     </form>
+        <script src="funcion.js"></script>
+
+    </div>
 
     <ul id="ej" style="display:none ">
 
