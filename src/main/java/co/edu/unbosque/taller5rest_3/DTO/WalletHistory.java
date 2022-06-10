@@ -1,23 +1,32 @@
 package co.edu.unbosque.taller5rest_3.DTO;
 
+import java.sql.Date;
+import java.sql.Timestamp;
+
 public class WalletHistory {
 
-
+    private Integer wh_id;
     private String email;
-    private String type;
     private float fcoins;
-    private String registeredAt;
+    private Timestamp registeredAt;
 
-    public WalletHistory(String email, String type, float fcoins, String registeredAt) {
-
+    public WalletHistory(Integer wh_id, String email, float fcoins, Timestamp registeredAt) {
+        this.wh_id = wh_id;
         this.email = email;
-        this.type = type;
         this.fcoins = fcoins;
         this.registeredAt = registeredAt;
     }
 
     public WalletHistory(){
 
+    }
+
+    public Integer getWh_id() {
+        return wh_id;
+    }
+
+    public void setWh_id(Integer wh_id) {
+        this.wh_id = wh_id;
     }
 
     public String getEmail() {
@@ -28,14 +37,6 @@ public class WalletHistory {
         this.email = email;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public float getFcoins() {
         return fcoins;
     }
@@ -44,11 +45,11 @@ public class WalletHistory {
         this.fcoins = fcoins;
     }
 
-    public String getRegisteredAt() {
+    public Timestamp getRegisteredAt() {
         return registeredAt;
     }
 
-    public void setRegisteredAt(String registeredAt) {
+    public void setRegisteredAt(Timestamp registeredAt) {
         this.registeredAt = registeredAt;
     }
 }

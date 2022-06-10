@@ -20,7 +20,7 @@ public class WalletHistoryService {
 
         try {
             // Executing a SQL query
-            System.out.println("=> Listing users...");
+            System.out.println("=> Listing wallet...");
             stmt = conn.createStatement();
             String sql = "SELECT * FROM wallethistory";
             ResultSet rs = stmt.executeQuery(sql);
@@ -28,14 +28,13 @@ public class WalletHistoryService {
             // Reading data from result set row by row
             while (rs.next()) {
                 // Extracting row values by column name
-                //Integer co_id = rs.getInt("co_id");
+                Integer wh_id = rs.getInt("wh_id");
                 String email = rs.getString("email");
-                String type = rs.getString("type");
                 float fcoins = rs.getFloat("fcoins");
-                String registeredAt = rs.getString("registeredAt");
+                Timestamp registeredAt = rs.getTimestamp("registeredAt");
 
                 // Creating a new UserApp class instance and adding it to the array list
-                walletHistory.add(new WalletHistory(email,type,fcoins,registeredAt));
+                walletHistory.add(new WalletHistory(wh_id, email,fcoins,registeredAt));
             }
 
             // Printing results
@@ -72,19 +71,18 @@ public class WalletHistoryService {
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
 
-    public long insertWalletHistory(WalletHistory walletHistory){
+    public void insertWalletHistory(WalletHistory walletHistory){
 
-        String SQL= "INSERT INTO wallethistory(email, type, fcoins, registeredAt)"+"VALUES(?,?,?,?)";
+        String SQL= "INSERT INTO wallethistory(wh_id, email, fcoins, registeredAt)"+"VALUES(?,?,?,?)";
         long id=0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
 
-            //pstmt.setInt(1,coleccion.getCo_id());
-            pstmt.setString(1,walletHistory.getEmail());
-            pstmt.setString(2,walletHistory.getType());
+            pstmt.setInt(1,walletHistory.getWh_id());
+            pstmt.setString(2,walletHistory.getEmail());
             pstmt.setFloat(3,walletHistory.getFcoins());
-            pstmt.setString(4,walletHistory.getRegisteredAt());
+            pstmt.setTimestamp(4,walletHistory.getRegisteredAt());
             int affectedRows = pstmt.executeUpdate();
 
             if (affectedRows > 0) {
@@ -100,7 +98,10 @@ public class WalletHistoryService {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        return id;
+
 
     }
+
+
+
 }
