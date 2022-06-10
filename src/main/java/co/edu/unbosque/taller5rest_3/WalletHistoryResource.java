@@ -17,6 +17,9 @@ import java.util.List;
 @Path("/wallethistory")
 public class WalletHistoryResource {
 
+    private WalletHistoryService walletHistoryService;
+    private WalletHistory walletHistory;
+
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
@@ -25,6 +28,8 @@ public class WalletHistoryResource {
 
 
     public WalletHistoryResource() throws SQLException {
+        walletHistoryService = new WalletHistoryService(conn);
+        walletHistory = new WalletHistory();
     }
 
 
@@ -72,24 +77,70 @@ public class WalletHistoryResource {
 
 
     @POST
-    @Path("/form")
+    @Path("/agregar")
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createWalletHistory(
-            //@FormParam("co_id") Integer co_id,
-            @FormParam("email") String email,
-            @FormParam("type") String type,
-            @FormParam("fcoins") float fcoins,
-            @FormParam("registeredAt") String registeredAt
-    ){
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response crearWallet(WalletHistory walletHistory){
 
-        WalletHistoryService walletHistoryService = new WalletHistoryService(conn);
-        WalletHistory walletHistory_n = new WalletHistory(email,type,fcoins,registeredAt);
-        walletHistoryService.insertWalletHistory(walletHistory_n);
 
-        System.out.println("Si es aca - Crear collecion");
+        int random = (int) (Math.random()*(1000-1)) + 1;
 
-        return null;
+        walletHistory.setWh_id(random);
 
+        System.out.println("Entra al metodo para añadir las lukas");
+        System.out.println("id: "+walletHistory.getWh_id());
+        System.out.println("FCoins: "+walletHistory.getFcoins());
+        System.out.println("Email: "+walletHistory.getEmail());
+        System.out.println("fecha: "+walletHistory.getRegisteredAt());
+
+
+        boolean b = true;
+        for (int i = 0; i < walletHistoryService.walletHistoryList().size(); i ++) {
+
+                System.out.println("Entra al primer for para añadir las lukas");
+                System.out.println("Email dentro del for: " + walletHistoryService.walletHistoryList().get(i).getEmail() + "\n");
+                System.out.println("Tamaño del malparido " + walletHistoryService.walletHistoryList().size() + "\n");
+
+
+                //while (b) {
+                //if(walletHistoryService.walletHistoryList().get(i).getWh_id() != random){
+
+                if (walletHistoryService.walletHistoryList().get(i).getEmail().equals(walletHistory.getEmail())) {
+                    System.out.println("Dentro del miserable IF");
+                    float suma = walletHistoryService.walletHistoryList().get(i).getFcoins() + walletHistory.getFcoins();
+                    int random2 = (int) (Math.random() * (1000 - 1)) + 1;
+
+                    walletHistory.setFcoins(suma);
+                    walletHistory.setWh_id(random2);
+
+                    walletHistoryService.insertWalletHistory(walletHistory);
+
+                    System.out.println("La suma de fcoins es: " + suma);
+
+                    break;
+                }
+
+                else if (!(walletHistoryService.walletHistoryList().get(i).getEmail()).equals(walletHistory.getEmail())) {
+
+
+                    walletHistoryService.insertWalletHistory(walletHistory);
+                    System.out.println("Fuera del miserable IF");
+
+                    System.out.println("Esta es la prueba del email impreso: " + walletHistoryService.walletHistoryList().get(i).getEmail() + "\n");
+
+
+
+                }
+
+
+
+        }
+
+
+        //}
+        return Response.ok()
+                .entity(walletHistory)
+                .build();
     }
+
 }
