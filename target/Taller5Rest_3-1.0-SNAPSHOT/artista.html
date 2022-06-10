@@ -135,6 +135,7 @@
             <br>
 
             <a>Seleccione una imágen de la pieza</a>
+            <input class="imagen" type="file" name="imagen"></div>
 
             <br>
             <br>
@@ -154,6 +155,23 @@
 
 
     </form>
+    <script>
+        // Getting form by Id
+        let avatarForm = document.getElementById("ip");
+
+        // Triggering event when submit
+        avatarForm.onsubmit = async (e) => {
+            e.preventDefault();
+            console.log("usuario "+localStorage.getItem("username"))
+            // Making the request
+            let response = await fetch("./api/Users/"+localStorage.getItem("username")+"/imagen", {
+                method: "POST",
+                body: new FormData(avatarForm)
+            });
+
+            let message = await response.text();
+        };
+    </script>
         <script src="art.js"></script>
 
     </div>

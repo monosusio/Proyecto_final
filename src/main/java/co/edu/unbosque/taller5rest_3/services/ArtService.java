@@ -68,7 +68,7 @@ public class ArtService {
     public Connection connect() throws SQLException {
         String DB_URL = "jdbc:postgresql://localhost/postgres";
         String USER = "postgres";
-        String PASS = "Santuario11";
+        String PASS = "monosusio";
 
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
@@ -104,5 +104,39 @@ public class ArtService {
         }
 
     }
+
+
+    public void updateart(Art art) {
+        // Object for handling SQL statement
+        PreparedStatement stmt = null;
+
+        try {
+
+            // Executing a SQL query
+            System.out.println("=> Updating owner...");
+            stmt = this.conn.prepareStatement("UPDATE art SET imagePath=? SET name=? SET price = ? WHERE co_id = ?");
+            stmt.setString(1, art.getName());
+            System.out.println(art.getName()+ " linae 119");
+            stmt.setFloat(2, art.getPrice());
+            System.out.println(art.getPrice()+ " linae 121");
+            int rowsUpdated = stmt.executeUpdate(); // executeUpdate is also used for inserting records
+
+            // Printing results
+            System.out.println("Rows updated: " + rowsUpdated + "\n");
+
+            // Closing resources
+            stmt.close();
+        } catch (SQLException se) {
+            se.printStackTrace(); // Handling errors from database
+        } finally {
+            // Cleaning-up environment
+            try {
+                if (stmt != null) stmt.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
+
 
 }
