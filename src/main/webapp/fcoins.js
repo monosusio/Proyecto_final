@@ -7,8 +7,10 @@ formularioFCoins.addEventListener("submit",function(e){
     console.log("estos son los fcoins "+document.getElementById("fcoins").value);
 
     console.log("este es el email "+localStorage.getItem("email"));
-    const fecha = new Date();
-    const timestamp = fecha.getTime();
+    const timestamp = Date.now();
+    const fecha = new Date(timestamp);
+    const registeredat = toString(fecha);
+
     var data = {
 
         "email":  localStorage.getItem("email"),
@@ -16,14 +18,13 @@ formularioFCoins.addEventListener("submit",function(e){
 
     };
 
-    console.log(data);
-    console.log(timestamp);
+    console.log("la fecha es"+registeredat);
 
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Access-Control-Allow-Origin", "*");
     fetch("./api/wallethistory/agregar",{method: "POST",
-        body: JSON.stringify(data,timestamp),
+        body: JSON.stringify(data),
         headers: myHeaders
     })
         .then(res =>

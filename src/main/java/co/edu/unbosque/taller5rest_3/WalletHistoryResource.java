@@ -12,6 +12,9 @@ import jakarta.ws.rs.core.Response;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Path("/wallethistory")
@@ -86,6 +89,11 @@ public class WalletHistoryResource {
         int random = (int) (Math.random()*(1000-1)) + 1;
 
         walletHistory.setWh_id(random);
+
+        Long datetime = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(datetime);
+        walletHistory.setRegisteredAt(timestamp);
+
 
         System.out.println("Entra al metodo para añadir las lukas");
         System.out.println("id: "+walletHistory.getWh_id());

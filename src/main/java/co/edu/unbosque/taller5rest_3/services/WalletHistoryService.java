@@ -31,10 +31,10 @@ public class WalletHistoryService {
                 Integer wh_id = rs.getInt("wh_id");
                 String email = rs.getString("email");
                 float fcoins = rs.getFloat("fcoins");
-                Timestamp registeredAt = rs.getTimestamp("registeredAt");
+                Timestamp registeredat = rs.getTimestamp("registeredat");
 
                 // Creating a new UserApp class instance and adding it to the array list
-                walletHistory.add(new WalletHistory(wh_id, email,fcoins,registeredAt));
+                walletHistory.add(new WalletHistory(wh_id, email,fcoins,registeredat));
             }
 
             // Printing results
@@ -73,7 +73,7 @@ public class WalletHistoryService {
 
     public void insertWalletHistory(WalletHistory walletHistory){
 
-        String SQL= "INSERT INTO wallethistory(wh_id, email, fcoins, registeredAt)"+"VALUES(?,?,?,?)";
+        String SQL= "INSERT INTO wallethistory(wh_id, email, fcoins, registeredat)"+"VALUES(?,?,?,?)";
         long id=0;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL,
