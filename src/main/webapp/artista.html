@@ -1,72 +1,162 @@
 <!DOCTYPE html>
-<htm>
+<html lang="en">
 
-    <head>
-        <title>Colección de arte</title>
+<head>
+    <title>Artista</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link href="artista.css" rel="stylesheet" />
-    </head>
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
-    <body>
-    <header>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAABpFBMVEX///9QAAD269js1a//niH/QVqfX0tyRDX/0yJOAAAAtbxMAABJAABIAABGAABEAACaXElfaeLx4MRAAADx27QLeJz78d5TAAD/oiLbKk/+9OCwAEH/2SP/myE8AAD16NX38/Ps5eXs3cvcwJ7jyaXUxsa0m5ttOy7NvLyTcXHbz8/FsrLi0L+VVEJ7TEa3mo2MY1uojY1kLCJeIhu9opXCoYRWEQ2hfnRkJyPPuaqUbmW0kXfStJSlh3zUvq9dGBhtKyKbe3uFX19sNjZ/PTDl29uDVk9zOS9dXclYP4ewlpZRCRSMXk2kgndGKiyEVUY3WVwPp7CQQg7VexrqjB21YhSnVhL/xSKngGnJL0F0Q0NdJiaZUjplFQByPjlUKlpbUa5TIkpTGjhSEylZRpeccl4va28clJpKFBVCNDYmgIY/QEKs0ceAzMio1809SUw8NkZALjsfYn9yJQhGHyk8X3IwR16wXRSDNwxfIAWAQwuYYhCTWw+xfxXlth3ouR7OnBn/sSGmcxLzq1fzw4X1u3O1fFJyEhmUHSieADaGACiIGSNv35ypAAAZGklEQVR4nO2diX8TR5bHaYtgij6K0Eq3UcBqybctH2BZlmUbYQvLhJgYMIcxgyezuwQmmZ2dWTYbhiSTY2YXMvmnt7teVau6ulqH1VKzjN4nnyQYW65vvzp+9erV61OnBjawgQ1sYAMb2MAGNrCBDeyf2pzZiZ2k29BLm6uNmuaospVLuiE9styRqSqe6dpc0m3pieVKmkINmZNJt6YHtqOpSsNGJ5JuT+w2oSIOUEHVpBsUt01rAIjsErjSnE26SfHanAmA6vUzZ26Q/9WvJN2mWG3ShL6puYDnh5fJ/24n3ag47QoGQPWGBzh8lfx/PelWxWhbQcDhEvHhTNLNis9mBMAq+RN+fxb9bQqIKOAyzDmmk3TD4rIjg66A8wFA/L5MpU5NBwcywKsAqNWSbllMlqtqdJ0PAqpPnKSbFo/tVEG/oBIFnKLCpvSebJ92FABUS+cpIJ1z9PdkEzxLtbZaPRMENN6TfcW00ZCiPKBiTCfdtHhsDguAIGXchfDdWuodxznZD07ihtYOAI7eirWBXdjO3K3tmmK4Vp2Zczr96StsM3FDAHwnVnpnZ3KrZphYZ5tWDesdRse2zIYUBcAqfJaRvN7emduuYqwFIg7eflXt5NnPhACpVjOS3hTObj3RwnS0ex057X4M09raPAOkUkZPVqvtbCmmLqeD9trt9VSHam0iRQOAWs3pLUIzy00eiXhI0w1sINU0aBRQrbbVQF5rBwDVJ8lptZ0ZBasBOMPUy5XNxWv5fL6weEzDSPpRG581E/IgE6NKYoATR1gL0GnVSrEwNGS5NjTk/fdaGfzSTqT6CeEhWpsC0s81khKj0zWz4T7V0J9U1vIZQPPNurBPPINsp+Xn1bxPQ9XzIqCWUHx04qjBh3R8vFnIZoJ0xC6k9okXjdaCZNLt0kRrA+Aw/fCExOhOvTH8VNO+XRiS0AHhOFmyUbnlR565US3daAAyrZaIGHVmTM13n1ZfsyLwCGF6hSxyrWLxs785Qy0AaCYiRudsnfHh0mpB1jk5wlS6hJp2U2ducufUhBwQb/UTjFpuG7PlD9uL+UwTPEr4zHN4ZCw+VzOxUTkTBGRxtSTE6JzKOqiONrPN3OcTrnvTKYrQXTu293nGeRlgEmLU2abSWNHQams+QpjawErksV8OOgTZK4mAbemEmG2iqrMBuFRo0T8bhCtNCLdAyBCpzQATFKO3aABFMZbX2vBfoJeq8l66Tfo82c8LgGq1/1qN7W1Uva0O6hMeeo6PODGa8z5T5QGZGEV9B8zV6DmCUW6vg/qEZC6NOLl1nqoausED0mGg9l2MztIgLcJhB1qZbL4Q0qQ+4bD3k4ZUe+fOnJm/MS8B1PseGWUJEaoeGoGZwubxsmJXa5W18OLvEe56hNJTv50zwjrIxGj/A4csX8Co5QUIq7Awqnv4CGlmqSgiNiVsKDUGyLRa39OCWL4Arog91FrU+S2iWc9H9FIcbPSOO8wmIgH7HjhkQVpzM9RDK1gJmF7Ohwj3NHEcukrNPCqGAKv0OfZdjFJAhIviHJq5bSqCabWsSAhzKdfsHeR+RXsqAiYmRueAAinXREBrDYuArrMqlkAIK35Dgk3QsOO8FLD/YnSaAtrXQhNltka3wb/9/ObNm598ShH5b/RVm6L7T4wC2ucDgFeTEqOzECpEaiEEaBWpCz//kNjN30E/rQuE40TMsi3wJN18BcW2L0b7foqdswFQCQMOWXVw4c0Pmf0LTEj5IGFqyvs+Kmpusbj9dRlgm5HVGM0pq3QMSvRKFjYan/iAH96EqYJbFT3C9DPvG1HJ+8DAyUsDMLnI6IIeHlq+C69Baz/kjPRTfVUg3CCKFk8Hs5x4QPhqAoFDmjg3GlomuGH4rzzhJ6T5C5kAYSpF+qA7m243BVRw38XoNDQIL0r3ElaRuOZ3POG/kfYfC4TpQwgLl9j+eT4AyMRo/xPW6CwTXOBO5MNxSgb/tgXAxMToqSPYfx9L+eTj8LeyccjmGqU5YP9PsW9heO75CMK251LPbB+wdF4KmEBkdIcOQtk0Sp0YsR5i7plQQtCmCk0C4gGZVksgMnpEmo9vR0dkmKb59HO+j4Y1jQu4ws5Kr8sB9YX+A8KGQjvORgK63bTc0KUf+roUi7rU1d50GGoiYIIplTlok0SN8k5sa2/hLhZsGYwEdPpPWCfjxpSvhL61uT8UlJoIqJYTOMWeGCW/+rhVWNSqCIh6NR/4BpdwD0cAJhc4PEVPnBWjaR8FxM3AUb65IARyLqSGaZhViwLESZxiwzRjrLYR2c4UFnQSa/NyvMpirM26cJ2t9fNyQKX/kVHXHJIWgYQOF824ulBCml1bWgtF4vJlmq4dAkxOjHoGLsSLgfZaViaTHcrIItvWUN61bOhvrEI0INNqh+kLQ07fCYniRst8g61ssVJWVNXevb0WlZUQAr/GTgJK5yMA8bM0kQQXrFPeXVjd7o/6BheaXPjeyq8impin6qa92NbRk7tacunaQUCWUrmXTjG74NiaO+30hZFkFvArhbWosPsrMPuV11qfPllFnctmDgIyrbaf4gxCcgg/6XkCzXTIhUt+boLPeLsVYmaRHqdq0YC7PCDNSvE+fLvHCoBIbrWxK8weG0rIzIhtsQ94W4ipcYBMq11NBc2/0Kz19uhplvAY/spm1Rmgbbv/sI1es00Hp3V8IRMCVMvj6QBgemPZ7yvmttM7wi0S+qsydZnZpG21P/vi+d27z++8oIy42VH+kihkQoDIHksLPkyn1peZlNerPVM6DvwCf5wVqChDz89R+4J+oRRNuGBEetBPqQwBAqPCfl/PpMAczDN51t2WdHDguYbdpWdEixERqnxNVGphQHVDAugxju+xhI9eBW5gnvGjZQX4bS/ucoTnnkMry3LAQk0UMiFARV+RA5I5lQUdzZ6Ebhwy6vxYkrVIXGo/PxewL8hYlEfCC+zmYCkM6IvR9UhAz437dDT25CRxkowgm80z1hKZwX9/TrAXMFglErWgi0qNA2Ra7bAJYIoEBXp3WEo2hpq/2GWJvrG/FAnveE5U66Fl31rTRaUWBjSeNQf0eiqNHsffUXNqcCHIQie9KxJ+6RGiUJgqU9REpcYBLofFaCTiBiuCEXcG7TQk2bGZdCgPi6EICHMNErISXKUmhpwkgEExGok4ZlPEmFUqSaTTljKtCO8SwidBH1qrVBygZoBT7QB68w0gIi3WKA5s7huKbShrynvpuc/cboqFKEcj86QU2vA2xOh4e4SeF2G7FmuocYfMpGrBb3TWls805+7+3jArQRcuNYKnbCkMAarL7QJ6YxH6aawBf7L3ReXGFEmPJr4KEZ4794fgNji7ENhCNq72wEofKUabIa5Ar4+zbtKMFlgrvGAhrI/Pw4TBIZg/ZqefbPMxzwPSv1M7AfRiyW1fuGnXat6j5g/HhgrQUz4LAf57EJCGnJRPn9+xmRdDgFqEGI02kvQXyKfqzhxQ3QW+7RDet0P9NABYoFO77enXO8yLU4IYNaLFaJQTx2Dl1+PaSk2Qfo8C46ug07YHO+ofeMBrKgUEV4uI9E9NxWgU4jrMfXElShFRqi4ECDOrdIq0v/ry7l22bPyR/441ml1rM/kaRGxTjEYgktTN2Nb9LZJEKOrpY3YwYSvoxZ2QBzMspmb/h+9hHlGIjHZKOAb9KqYibUR2G+LGNl9upBko9hfCJOMrNfsOt1r+yUdsLkbTvkUiQpJDTE6EM8PQri+7wB2Eqn8MhLx9paa84AA/+shHBJOK0XR6fGP9cG94d3j/2eHGeEpOCZkqUZeKOjOHHBoa+aGQ3fZTnVEpsGOyGkqt0UldQAFR2w23PD2+vm+bhq6prmk61oYPx2SupOlGsZQ12fHcgWwJoVVYwgaZT4JxUotTaj4iAQwgauWQVkuP7ZXYVW/WO3R1WLaegBNjqUM3QTRbTZqbYOUXF2z3US9FeJAgfsUBcohqVYiMeoEKXVafQMW7YVFAR6IWQyCcbA7VekSQ0MpkvGsj/FcWafpwqdSYTX3Ajz76M+vYolZLr2taGI8y7oXG41i7N4lbGlkOuc1hKyv4xarO+4gc4H+y8h+iW/xIE/lbw8DY0Bsd1rgqfj+siehJ94RXyA2sFgcSDctAKBWKVTHEP4mAIa2WHrvKVh8Vjz69980D1x6+xP7VYlURf4LeJO5+K0zi+Xo7h/fE6P5fITE1hoh8QuoVMTKaHkP0bzT95cHlEWanD+6pdP+FTHHCIbvUGKp6khCGHro1EmHWIkhGlmlIERngC2htSIyOldgNsVcHLlfDRkbuP0TUjwIiZMXFoGu2pZImspMukNHRODwjiH+mgP8FE6kZEqNXaVFn+4DHY4yv6NyFgmMRuinuejatd0SYJXqscfZyZr6EkP01nUYBEK9eCPKlocKCgl9dDgESxoeAKEQ7xsnT6/6sZqEdQgvMP9HgQ/dTU8NTX3OARsUKEqbXAQA/lPERxgN4BHpAx6b3SaC660W/JaHlrojFzdXV24vXChnY/YeyLDxEutYb9UYGLfUFjDN8LwrQQ4SHYPL9tPmF99gIM9niQtXAumsGto8rCk/YiMkMf/3fAKh7B+UBQqZOXkYDuojfwH6pzBNukEfT9dXgpuPQyt5WMFdZmxUeEMOGtNgvS1IMEI5BjNeWjsEG4ivy0YF1FMqHdH1bYVu6AaaARSTJV2AzTQCQHdOT26Y8IXUhDs+iQcL7ZPlTd3knkpCU0e2KSGKJ8hU/G0o4oYauC4B+ZBTyGnlCcIT6qjmg10/Jw9S5kUhra3QbG96KUm1WvuY7ELkbDI3vrfNBQPpdmCZucoRUfLVyoWuXQcNwcQ96h7HbbPBbEcrbKtD8NAUZ2l9ef/vzd69Lhr85sOclgDoLFPCE5LYsetoS8PTIQ5IPUub8TytPON0Rzsl3T1bBF1p/+f6vZy95dvbH7/wNEJoSARXdDyrzvRTq1Dxog/A+nLWPcZMU8b/aJeG0fAecpxVvNeVHF+8s2KVLP3w3yvrqMjBOLdM/m435mCMcJ80277cmPD1CAsEGr2nhh7tcLkhAGJXyAiEN2OPXZxkeZfwR+V21tHx1ucT+YG6K954awxDZrflcwnuaOBDhk7uMfefIc9KChFadVlz79qxol354zcUZfcOr3EjmCGGyeNUW4QPyvfscISjTbmOK0BMKAUAaDsXfXgoRnj3706vwIolD9y1oG6HESaQiDRAeEH9f5wijS090Ynbo6MnV1yga0G3sS8GL6mhQE3GEcC2/TUIYMBxhk/IhHRgRpoEtsLVAhpr+WsL36LLblMtP+ZCgimtCZReOcK9jQpsj3I+FkARq1CXugHQNVHBJ1kMvQ1uoE1VPjodLt8Xmw3gI52C24wghH9v8a7iPAqA37UE8qrK6uZYP5/GL47BdwtA4jIdwB6YafzKl1+8MySAcucwacx8uaq9JC/BI5tK2CMNzaTyEDswqfkaUVSbXEmzJHHO50ZqXwUSxSMLu1sN4ZhpIvfSnGusanIl8L7rwUSBG9gD231LAk2oaW9Q06d14IjVkqkE1Oh1aFU3qwkfB1oCIVORXMePSpelqLCs+vYiA6EDMkybpPwsufHRZaBD4piVhx3sLPpc/HtXm6ja4gA8DkS4V5g8tAE+rYSkkJexif5hKx6K8T9GBqFVIN7VWyZN8GdTbYcB2CbvZ49Pdk+Z0TQhXESDnEGbS4DwjA4ReOppvSdhFnIZVl+yeEK6TwG1syEsMrvYSQDotaK1nmtQY1Lp5KnlK/AdCrA3zsbb0ilCJ6eRGhDaJRtGiEKiVB0ceQLqfFFAaLx1t6kRZvJT+ZCxv6yIRRdJcKF2ivm4BSB+5ttRqxScjkQzZ0WZLIgg2IeZNF/xY3poHda+8jBNrkTw2TrFJAU9fhj4VEUgWzy1GETKabYJHDmDHqQv5N8vxLIeeQT2TpQxd77nVUA448lDMum1C6CJeXd77WzQf7aKKuhz8uTHy1XgSomfAJdmhDMlKbEylj+Rtug8t4pLhLO/GcIYWnhcIU+l0Kp2KQow8P4SJBsVTB2yW/A6jaMEJaINQPnbYxMfUupUZulZcXarXK4teDfoQIZgMcWTkctQZMJ1o4spQrEEJdZEwAvAexDFrAGgNrdU1w8tz0rz/1BbzcsLU3wNo3jH+6YN7hl+kOJQ4FN9Ec4rdCzLWMnWe8CfpNMqObCEXzrKKZT+jgoAb+jMxWSjkxpH7Bw8ePHylRedisLSouApl5eDX1DNL3EzzE0uaEIYNzOwGOQmwCgvh4xvDjsqb/TswusupkE9TDqVFUUVrOPEQ0rnGKGz6q8WlRyPukz54cHBwv5Ee4g4behtSLXt6JlNEmsjndTljPwIxlfof94HdHw18u2qGc6LoriSimvQJDGIZWt1f8S89evAKm9gzc9R+9Y1LenDwzUuTxaBK3jmTtek3VXXHoKH751PGblRP9Tz5v3zEVTWmpMnu8Dnx3dSH+knGbaLC7bM//Iy4N60gTccert+vGCC7EWRob96+ffz47a82+yl9N/oaCbtTQfA0aW4iSzaJISeK2SwVhpAm/70tPfxtDBsCyMpgGvbjD5g9fsNeMxPdUVOpXezllxoY78rzS/2tcwx5bb4d0XKQ0Dz54S997niJXJ0pQC4lwm8/4O2xTU91mmSxjx/u7u4/W19JReQIuwb78jivBU9Iyj8pyH3UAqyGa1A+IlOjz+TxB4K9oYhNLss0z/P2byTE+z6dujgrqlgvL9TrNdt7qZqKkHfWjVGdljmxitCv0UUR8IOLbwi71qyftjJyKBPblQuw2eDQQ+ZxMZ91V/SslzFUOS5Xq7UlPsQNQxaHPOgSfgx37PSOLwT5tgGRgZhrnszwR0paiSu2bjXM/xIUNTPehgFdwl/AiW1cjZVbep/MM4oTL6HDjURdrG4lmrUEcVUJoEv48RviRLv9i4dBgxzo+C53MbvlI+pNy+55BnFVqQs9wl+gl3V8rYu6kCwVymj8BV1YIWtcy7cAHCpAhFoG6BHCSNROdisoBbeCYrmLIBidbPQWVfeGWLKwvJMSwn+QuXDqZPee9uEiTy+K1tE3wMjKXAuEJHKsSTspIfwFhumJAGEi7YULXYPTUTUiTMgRkoCOIVkqKOHHMFecyIdToJF7U6xmFjYLRqVFP4WptCWheQLC9DruoQv9WtdRgcIOfWicgHAcxHEcF4LkRsWb0fzVRzAO9RbjUDnBOKTTTA/fBMyK6reo00putKtvoudSMtNc79iHNHgB5ep7ZLPszQ/i22UChFS0RRISUdO5bGMXuXtbqZ2+YIamNEdYPlJ3AyHEfTq/yQ3zqN7jKtFbMNs0r5hMIqvybnqRLviKPtapC2lBhZ6/D4K+HaGZOqXZfVInuoTkboI63CngOn1rQe8LuNLKXVqTjpqHcqAy3XbxY9gCd9pJ0xt0qepDLXqHpQhHI2ZWQVtJ+unFf8BdkOXWUAFAWpymP5XMczSPXVuOXDSy4Gc9jPgW1G2ne6dxeKxqyekH4akczWRXtaga+zRQo2i2EKn5lU5Uwx0Cwm9Eer/qYOdo6RIUeSnKqtCXaptvOcbHCq3sXupog58eW+5NFaxmiLSOnmKsRvXTBVY633jz9vHFDy5efPyrjdn7cToKQ7mA8Nv6+koPh9XGMI4j5pusXw5SNbCGyL/gz6izOFt6g9Ux6+8rPZwjVpEURenwuiyO7I3NjkonuWIU9W2dCBp7kREKvyKQjsVNNXy8hvB+k5MnCeAhfZK9KXzZ3K6Y7IZ9OfSOOUAs1M0go2qWVjrAS6VT+wyw/2+dcW2anaipRsTLZK3CkoZ1L+rvmmbg4+KFzoagX7o0kReOc6+TVQy7KH+heia7tnr8pFoqlY+XioWMFZGpIHfgMzb5GokU2/fMmWEn9QgvyLuqV3/fK7OfzWTEO6StHHiVTWZ2Eu+DYDbtzyaa3s6Lq9slTI/vsTFg1BJ4ZQlnTuPl8ZpRabYx7oAwnTpk1xmRmcQb44M2V/XP3nRcKcjHYyeE6fF1/yRdtxMbgpw5M6afuaDp9aZvg2hJmE6PH1ZZgWvF7HVJ/XZttmb6B96aUd7Mh1/m3B5hOr2x18gU0PV3wYHU5qqN/Cekjy4UJXeeWhG67lvn0sQ0fcZJGitgk2Uux0vFer1YGJK+lzuCLjW2vq/73dP9hHoSL0Vqas6kbXLJGSpWa5W1gvAiGhlhOp0eW3m2q3LVzFTzKIlXBrW2uSf8257c7mqopaVFL4WBHfRfCIB5Nr6yvldVDb6YmYbfUT7PJrYVI5Bl48nRUeW4srlYvFbI5y+MMxvbWFk/3Nu1TRygcyWasp2khmltuVs1M5Q3pWq6gU3TUG275JptK7rpJVlqqvCNulm79Y4sEM1s54ptGmLbmYuIyf9KN9HWu+0+znZu1VSsR1DK6DSslf//4IHlpreOFNOQ1UMMwqk61mvbc+/c4tCW5WYnZ2qqSUacSIqQd9/bxNXtK9M5J+mWdme56clbM0dVZJqQWewlF5vYLte3JudmnaRbF685uR1iOSfplgxsYAMb2MAGNrCBDWxgAxvYwAb2ftn/AQuEtYT5VmZ6AAAAAElFTkSuQmCC" width="150" height="100" />
-        <div style="text-align: center; width: 1000px">
-            <button onclick='coleccion()'>Crear colección</button>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/templatemo.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 
-            <button onclick='pieza()'>Crear pieza</button>
-
-            <a href="index.html"><button>Cerrar sesion</button></a>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
 
 
+
+
+
+</head>
+
+<body>
+<!-- Start Top Nav -->
+<nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+
+</nav>
+<!-- Close Top Nav -->
+
+
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-light shadow">
+    <div  class="container d-flex justify-content-between align-items-center text-center">
+
+        <a class="navbar-brand text-success logo h1 align-self-center text-center" >
+            Artista
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+    </div>
+</nav>
+<!-- Close Header -->
+
+<!-- Modal -->
+<div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="w-100 pt-1 mb-5 text-right">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-    </header>
-
-
-    <script>
-
-        function coleccion() {
-
-            document.getElementById("ex").style.display = 'block';
-            document.getElementById("pi").style.display = 'none';
-            document.getElementById("piven").style.display = 'none';
-
-        }
-
-        function coleccionAgregar() {
-
-            document.getElementById("ej").style.display = 'block';
-            document.getElementById("pi").style.display = 'none';
-            document.getElementById("piven").style.display = 'none';
-            document.getElementById("ej").accessKey.toUpperCase();
-
-            var email = localStorage.getItem("email");
-            console.log("Este es el email para la coleccion: "+email);
-
-        }
-
-        function pieza() {
-
-
-            document.getElementById("ex").style.display = 'none';
-            document.getElementById("ej").style.display = 'none';
-            document.getElementById("piven").style.display = 'none';
-            document.getElementById("pi").style.display = 'block';
-
-        }
-
-        function piezaAgregar() {
-
-            document.getElementById("piven").style.display = 'block';
-            document.getElementById("ex").style.display = 'none';
-            document.getElementById("ej").style.display = 'none';
-
-        }
+        <form action="" method="get" class="modal-content modal-body border-0 p-0">
+            <div class="input-group mb-2">
+                <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                <button type="submit" class="input-group-text bg-success text-light">
+                    <i class="fa fa-fw fa-search text-white"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 
 
-    </script>
+<section class="bg-success py-5">
+    <div class="container">
+        <div class="row align-items-center py-5">
+            <div class="col-md-8 text-white">
+                <h1>Acerca de</h1>
+                <p>
+                    En este lugar el artista podrá explotar su creatividad en la sección de creación
+                    donde tiene las opciones de crear una colección y crear una pieza.
+                    ¡Vamos anímate a subir tus obras de arte! Sabemos que tienes mucho talento detrás.
+                    Buena suerte artista.
+                </p>
+            </div>
+            <div class="col-md-4">
+                <img src="https://cdn.pixabay.com/photo/2017/06/17/00/11/statue-2410825_960_720.png" alt="About Hero"  width="500" height="500">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Close Banner -->
 
-    <div class="contenedor Coleccion" >
+<!-- KEVIN -->
+
+<header>
+
+    <div style="">
+        <div  class="h-100 py-5 services-icon-wap shadow" >
+            <div class="h1 text-success text-center" > </div>
+            <h2 class="h5 mt-4 text-center" >Sección de creación</h2>
+
+            <button class="h5 mt-4 text-center" onclick='coleccion()'  >Crear colección</button>
+            <br>
+
+            <br>
+            <button class="h5 mt-4 text-center"  onclick='pieza()'  >Crear pieza</button>
+
+            <br>
+            <br>
+
+
+            <a href="index.html"  ><button>Cerrar sesion</button></a>
+        </div>
+
+    </div>
+</header>
+
+
+<script>
+
+    function coleccion() {
+
+        document.getElementById("ex").style.display = 'block';
+        document.getElementById("pi").style.display = 'none';
+        document.getElementById("piven").style.display = 'none';
+
+    }
+
+    function coleccionAgregar() {
+
+        document.getElementById("ej").style.display = 'block';
+        document.getElementById("pi").style.display = 'none';
+        document.getElementById("piven").style.display = 'none';
+        document.getElementById("ej").accessKey.toUpperCase();
+
+        var email = localStorage.getItem("email");
+        console.log("Este es el email para la coleccion: "+email);
+
+    }
+
+    function pieza() {
+
+
+        document.getElementById("ex").style.display = 'none';
+        document.getElementById("ej").style.display = 'none';
+        document.getElementById("piven").style.display = 'none';
+        document.getElementById("pi").style.display = 'block';
+
+    }
+
+    function piezaAgregar() {
+
+        document.getElementById("piven").style.display = 'block';
+        document.getElementById("ex").style.display = 'none';
+        document.getElementById("ej").style.display = 'none';
+
+    }
+
+
+
+</script>
+
+<div class="contenedor Coleccion" >
 
     <form id="ex"  class="formulario2" style="display: none">
         <a>¿Cual es el nombre de la colección de arte?</a>
@@ -91,19 +181,19 @@
 
         </div>
     </form>
-        <script src="collection.js"></script>
+    <script src="collection.js"></script>
 
+</div>
+
+<ul id="ej" style="display:none ">
+
+    <div>
+        <a>Se ha agregado la colección</a>
     </div>
 
-    <ul id="ej" style="display:none ">
+</ul>
 
-        <div>
-            <a>Se ha agregado la colección</a>
-        </div>
-
-    </ul>
-
-    <div class="contenedor Pieza" >
+<div class="contenedor Pieza" >
     <form id="pi" class="formulario3" style="display: none">
 
         <div>
@@ -134,44 +224,84 @@
             <a>Seleccione una imágen de la pieza</a>
             <input class="imagen" type="file" name="imagen"></div>
 
-            <br>
-            <br>
+        <br>
+        <br>
 
-            <input type="submit" type="button" value="Poner a la venta" onclick='piezaAgregar()'>
+        <input type="submit" type="button" value="Poner a la venta" onclick='piezaAgregar()'>
 
-        </div>
+</div>
 
-        <ul id="piven" style="display:none ">
+<ul id="piven" style="display:none ">
 
-            <div>
-                <a>Se ha puesto a la venta la pieza</a>
+    <div>
+        <a>Se ha puesto a la venta la pieza</a>
+    </div>
+
+
+</ul>
+
+
+</form>
+<script>
+    // Getting form by Id
+    let avatarForm = document.getElementById("ip");
+
+    // Triggering event when submit
+    avatarForm.onsubmit = async (e) => {
+        e.preventDefault();
+        console.log("usuario "+localStorage.getItem("username"))
+        // Making the request
+        let response = await fetch("./api/Users/"+localStorage.getItem("username")+"/imagen", {
+            method: "POST",
+            body: new FormData(avatarForm)
+        });
+
+        let message = await response.text();
+    };
+</script>
+<script src="art.js"></script>
+
+</div>
+
+
+
+
+
+
+<!-- KEVIN -->
+
+
+
+
+
+
+
+
+<!-- Start Footer -->
+<footer class="bg-dark" id="tempaltemo_footer">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4 pt-5">
+
+
+
+
+                </ul>
             </div>
 
 
-        </ul>
 
+</footer>
+<!-- End Footer -->
 
-    </form>
-    <script>
-        // Getting form by Id
-        let avatarForm = document.getElementById("ip");
+<!-- Start Script -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/templatemo.js"></script>
+<script src="assets/js/custom.js"></script>
+<!-- End Script -->
+</body>
 
-        // Triggering event when submit
-        avatarForm.onsubmit = async (e) => {
-            e.preventDefault();
-            console.log("usuario "+localStorage.getItem("username"))
-            // Making the request
-            let response = await fetch("./api/Users/"+localStorage.getItem("username")+"/imagen", {
-                method: "POST",
-                body: new FormData(avatarForm)
-            });
-
-            let message = await response.text();
-        };
-    </script>
-        <script src="art.js"></script>
-
-    </div>
-    </body>
-
-</htm>
+</html>

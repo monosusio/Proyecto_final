@@ -66,7 +66,7 @@ public class WalletHistoryService {
     public Connection connect() throws SQLException {
         String DB_URL = "jdbc:postgresql://localhost/postgres";
         String USER = "postgres";
-        String PASS = "monosusio";
+        String PASS = "minicraftteo";
 
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
