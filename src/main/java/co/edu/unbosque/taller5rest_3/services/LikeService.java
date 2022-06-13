@@ -19,34 +19,17 @@ public class LikeService {
         List<Likes> likess = new ArrayList<Likes>();
 
         try {
-            // Executing a SQL query
             System.out.println("=> Listing users...");
             stmt = conn.createStatement();
             String sql = "SELECT * FROM likes";
             ResultSet rs = stmt.executeQuery(sql);
 
-            // Reading data from result set row by row
             while (rs.next()) {
-                // Extracting row values by column name
-                //Integer co_id = rs.getInt("co_id");
                 Integer art_id = rs.getInt("art_id");
                 String email= rs.getString("email");
                 String registeredAt = rs.getString("registeredAt");
-
-                // Creating a new UserApp class instance and adding it to the array list
                 likess.add(new Likes(art_id,email,registeredAt));
             }
-
-            // Printing results
-            System.out.println("art_id | email | registeredAt |");
-            for (Likes likes : likess) {
-                System.out.println(likes.toString());
-            }
-
-            // Printing total rows
-            System.out.println("Total of users retrieved: " + likess.size() + "\n");
-
-            // Closing resources
             rs.close();
             stmt.close();
         } catch (SQLException se) {
@@ -66,7 +49,7 @@ public class LikeService {
     public Connection connect() throws SQLException {
         String DB_URL = "jdbc:postgresql://localhost/postgres";
         String USER = "postgres";
-        String PASS = "minicraftteo";
+        String PASS = "monosusio";
 
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }
@@ -79,7 +62,6 @@ public class LikeService {
              PreparedStatement pstmt = conn.prepareStatement(SQL,
                      Statement.RETURN_GENERATED_KEYS)) {
 
-            //pstmt.setInt(1,coleccion.getCo_id());
             pstmt.setInt(1,likes.getArt_id());
             pstmt.setString(2,likes.getEmail());
             pstmt.setString(3,likes.getRegisteredAt());

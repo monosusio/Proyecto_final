@@ -22,7 +22,7 @@ public class CollectioResource {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "monosusio";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
@@ -49,12 +49,6 @@ public class CollectioResource {
             CollectionService collectionService = new CollectionService(conn);
             collection = collectionService.collectionList();
 
-            //PetsService petsService = new PetsService(conn);
-            //petsService.countBySpecies("dog");
-
-            //OwnersService ownersService = new OwnersService(conn);
-            //ownersService.updateOwner(new Owner(6697, null, "Pepe"));
-
             conn.close();
         } catch (SQLException se) {
             se.printStackTrace(); // Handling errors from database
@@ -72,29 +66,6 @@ public class CollectioResource {
 
         return Response.ok().entity(collection).build();
     }
-
-
-   /* @POST
-    @Path("/form")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public Response createCollection(
-            //@FormParam("co_id") Integer co_id,
-            @FormParam("name") String name,
-            @FormParam("description") String description,
-            @FormParam("category") String category,
-            @FormParam("email") String email
-    ){
-
-        CollectionService collectionService = new CollectionService(conn);
-        Collection coleccion_n = new Collection(name,description,category,email);
-        collectionService.insertCollection(coleccion_n);
-
-        System.out.println("Si es aca - Crear collecion");
-
-        return null;
-
-    }*/
 
     @POST
     @Path("/agregar")

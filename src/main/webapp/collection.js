@@ -4,11 +4,6 @@ var formularioCollection = document.getElementById("ex");
 formularioCollection.addEventListener("submit",function(e){
     e.preventDefault();
 
-    console.log("este es el titulo "+document.getElementById("name").value);
-    console.log("esta es la category "+document.getElementById("category").value);
-    console.log("esta es la descripcion "+document.getElementById("description").value);
-    console.log("este es el email "+localStorage.getItem("email"));
-
     var data = {
 
         "name": document.getElementById("name").value,

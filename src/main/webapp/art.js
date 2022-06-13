@@ -3,11 +3,6 @@ var formularioArt = document.getElementById("pi");
 formularioArt.addEventListener("submit",function(e){
     e.preventDefault();
 
-    console.log("este es el nombre: "+document.getElementById("nameArt").value);
-    console.log("esta es el valor: "+document.getElementById("price").value);
-    console.log("esta es el co_ID: "+document.getElementById("co_id").value);
-
-    /*console.log("este es el co_ID: "+localStorage.getItem("co_id"));*/
 
     var data = {
         "name": document.getElementById("nameArt").value,

@@ -19,35 +19,19 @@ public class CollectionService {
         List<Collection> collections = new ArrayList<Collection>();
 
         try {
-            // Executing a SQL query
-            System.out.println("=> Listing users...");
             stmt = conn.createStatement();
             String sql = "SELECT * FROM collection";
             ResultSet rs = stmt.executeQuery(sql);
 
-            // Reading data from result set row by row
             while (rs.next()) {
-                // Extracting row values by column name
                 Integer co_id = rs.getInt("co_id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 String category = rs.getString("category");
                 String email = rs.getString("email");
 
-                // Creating a new UserApp class instance and adding it to the array list
                 collections.add(new Collection(co_id, name,description,category,email));
             }
-
-            // Printing results
-            System.out.println("email | Password | name | role ");
-            for (Collection collecion : collections) {
-                System.out.println(collecion.toString());
-            }
-
-            // Printing total rows
-            System.out.println("Total of users retrieved: " + collections.size() + "\n");
-
-            // Closing resources
             rs.close();
             stmt.close();
         } catch (SQLException se) {
@@ -67,7 +51,7 @@ public class CollectionService {
     public Connection connect() throws SQLException {
         String DB_URL = "jdbc:postgresql://localhost/postgres";
         String USER = "postgres";
-        String PASS = "minicraftteo";
+        String PASS = "monosusio";
 
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }

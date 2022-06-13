@@ -26,7 +26,7 @@ public class WalletHistoryResource {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "monosusio";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
@@ -54,19 +54,13 @@ public class WalletHistoryResource {
             WalletHistoryService walletHistoryService = new WalletHistoryService(conn);
             walletHistory = walletHistoryService.walletHistoryList();
 
-            //PetsService petsService = new PetsService(conn);
-            //petsService.countBySpecies("dog");
-
-            //OwnersService ownersService = new OwnersService(conn);
-            //ownersService.updateOwner(new Owner(6697, null, "Pepe"));
-
             conn.close();
         } catch (SQLException se) {
-            se.printStackTrace(); // Handling errors from database
+            se.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace(); // Handling errors from JDBC driver
+            e.printStackTrace();
         } finally {
-            // Cleaning-up environment
+
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {

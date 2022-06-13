@@ -17,7 +17,7 @@ public class LikeResource {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "monosusio";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
@@ -43,19 +43,13 @@ public class LikeResource {
             LikeService likeService = new LikeService(conn);
             like = likeService.likesList();
 
-            //PetsService petsService = new PetsService(conn);
-            //petsService.countBySpecies("dog");
-
-            //OwnersService ownersService = new OwnersService(conn);
-            //ownersService.updateOwner(new Owner(6697, null, "Pepe"));
-
             conn.close();
         } catch (SQLException se) {
-            se.printStackTrace(); // Handling errors from database
+            se.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace(); // Handling errors from JDBC driver
+            e.printStackTrace();
         } finally {
-            // Cleaning-up environment
+
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
@@ -73,7 +67,7 @@ public class LikeResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response createLike(
-            //@FormParam("co_id") Integer co_id,
+
             @FormParam("name") Integer art_id,
             @FormParam("description") String email,
             @FormParam("category") String registeredAt

@@ -23,7 +23,7 @@ public class ArtResource {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "monosusio";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
@@ -53,9 +53,9 @@ public class ArtResource {
 
             conn.close();
         } catch (SQLException se) {
-            se.printStackTrace(); // Handling errors from database
+            se.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace(); // Handling errors from JDBC driver
+            e.printStackTrace();
         } finally {
             // Cleaning-up environment
             try {
@@ -91,8 +91,6 @@ public class ArtResource {
                 artService.insertArt(art);
                 System.out.println("para por la api de arte");
 
-           // }
-       // }
         return Response.ok()
                 .entity(art)
                 .build();

@@ -177,7 +177,7 @@
         <input type="text" id="category" name="category" placeholder="Categoria" maxlength="25" size="30" >
 
         <div>
-            <input type="submit" type="button" value="AgregarColeccion" onclick='coleccionAgregar()'>
+           <input type="submit" value="AgregarColeccion" onclick='coleccionAgregar()'>
 
         </div>
     </form>
@@ -228,7 +228,7 @@
         <br>
 
         <input type="submit" type="button" value="Poner a la venta" onclick='piezaAgregar()'>
-
+    </form>
 </div>
 
 <ul id="piven" style="display:none ">
@@ -242,23 +242,7 @@
 
 
 </form>
-<script>
-    // Getting form by Id
-    let avatarForm = document.getElementById("ip");
 
-    // Triggering event when submit
-    avatarForm.onsubmit = async (e) => {
-        e.preventDefault();
-        console.log("usuario "+localStorage.getItem("username"))
-        // Making the request
-        let response = await fetch("./api/Users/"+localStorage.getItem("username")+"/imagen", {
-            method: "POST",
-            body: new FormData(avatarForm)
-        });
-
-        let message = await response.text();
-    };
-</script>
 <script src="art.js"></script>
 
 </div>
@@ -287,12 +271,14 @@
 
 
 
-                </ul>
-            </div>
 
+            </div>
+        </div>
+    </div>
 
 
 </footer>
+
 <!-- End Footer -->
 
 <!-- Start Script -->
@@ -300,7 +286,7 @@
 <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>
 <script src="assets/js/templatemo.js"></script>
-<script src="assets/js/custom.js"></script>
+
 <!-- End Script -->
 </body>
 

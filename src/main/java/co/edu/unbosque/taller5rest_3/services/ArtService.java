@@ -19,36 +19,24 @@ public class ArtService {
         List<Art> arts = new ArrayList<Art>();
 
         try {
-            // Executing a SQL query
             System.out.println("=> Listing users...");
             stmt = conn.createStatement();
             String sql = "SELECT * FROM art";
             ResultSet rs = stmt.executeQuery(sql);
 
-            // Reading data from result set row by row
             while (rs.next()) {
-                // Extracting row values by column name
                 Integer art_id = rs.getInt("art_id");
                 String name = rs.getString("name");
                 float price = rs.getFloat("price");
                 String imagePath = rs.getString("imagePath");
                 boolean forSale = rs.getBoolean("forSale");
                 int co_id = rs.getInt("co_id");
-
-                // Creating a new UserApp class instance and adding it to the array list
                 arts.add(new Art(art_id, name,price,imagePath, forSale, co_id));
             }
 
-            // Printing results
-            System.out.println("artname | price | imagePath | forSale | co_id ");
             for (Art art : arts) {
                 System.out.println(art.toString());
             }
-
-            // Printing total rows
-            System.out.println("Total of users retrieved: " + arts.size() + "\n");
-
-            // Closing resources
             rs.close();
             stmt.close();
         } catch (SQLException se) {
@@ -107,29 +95,20 @@ public class ArtService {
 
 
     public void updateart(Art art) {
-        // Object for handling SQL statement
         PreparedStatement stmt = null;
 
         try {
 
-            // Executing a SQL query
-            System.out.println("=> Updating owner...");
             stmt = this.conn.prepareStatement("UPDATE art SET imagePath=? SET name=? SET price = ? WHERE co_id = ?");
             stmt.setString(1, art.getName());
-            System.out.println(art.getName()+ " linae 119");
             stmt.setFloat(2, art.getPrice());
-            System.out.println(art.getPrice()+ " linae 121");
-            int rowsUpdated = stmt.executeUpdate(); // executeUpdate is also used for inserting records
+            int rowsUpdated = stmt.executeUpdate();
 
-            // Printing results
-            System.out.println("Rows updated: " + rowsUpdated + "\n");
 
-            // Closing resources
             stmt.close();
         } catch (SQLException se) {
-            se.printStackTrace(); // Handling errors from database
+            se.printStackTrace();
         } finally {
-            // Cleaning-up environment
             try {
                 if (stmt != null) stmt.close();
             } catch (SQLException se) {
@@ -137,6 +116,5 @@ public class ArtService {
             }
         }
     }
-
 
 }

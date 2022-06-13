@@ -19,34 +19,21 @@ public class WalletHistoryService {
         List<WalletHistory> walletHistory = new ArrayList<WalletHistory>();
 
         try {
-            // Executing a SQL query
+
             System.out.println("=> Listing wallet...");
             stmt = conn.createStatement();
             String sql = "SELECT * FROM wallethistory";
             ResultSet rs = stmt.executeQuery(sql);
 
-            // Reading data from result set row by row
             while (rs.next()) {
-                // Extracting row values by column name
+
                 Integer wh_id = rs.getInt("wh_id");
                 String email = rs.getString("email");
                 float fcoins = rs.getFloat("fcoins");
                 Timestamp registeredat = rs.getTimestamp("registeredat");
 
-                // Creating a new UserApp class instance and adding it to the array list
                 walletHistory.add(new WalletHistory(wh_id, email,fcoins,registeredat));
             }
-
-            // Printing results
-            System.out.println("email | Password | name | role ");
-            for (WalletHistory walletHistory2 : walletHistory) {
-                System.out.println(walletHistory2.toString());
-            }
-
-            // Printing total rows
-            System.out.println("Total of users retrieved: " + walletHistory.size() + "\n");
-
-            // Closing resources
             rs.close();
             stmt.close();
         } catch (SQLException se) {
@@ -66,7 +53,7 @@ public class WalletHistoryService {
     public Connection connect() throws SQLException {
         String DB_URL = "jdbc:postgresql://localhost/postgres";
         String USER = "postgres";
-        String PASS = "minicraftteo";
+        String PASS = "monosusio";
 
         return DriverManager.getConnection(DB_URL, USER, PASS);
     }

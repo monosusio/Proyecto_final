@@ -3,13 +3,6 @@ const $btnIniciarSesion= document.querySelector('.Singboton'),
     $Registrarse = document.querySelector('.Registrarse'),
     $IniciarSesion = document.querySelector('.IniciarSesion');
 
-
-/*var alerta1 = document.getElementById("crear");
-alerta1.addEventListener("submit",function(e) {
-    alert("¡Se ha creado el usuario!");
-
-})*/
-
 var formulario = document.getElementById("login");
 formulario.addEventListener("submit",function(e){
     e.preventDefault();
@@ -35,17 +28,7 @@ formulario.addEventListener("submit",function(e){
             localStorage.setItem("name",dato["name"]);
             localStorage.setItem("role",dato["role"]);
 
-
-
-            console.log("cambipo nuevo en javascript");
-            console.log("Si sirve esta piroba mrda")
-
             console.log(dato)
-
-            console.log("Este es el username" + dato["username"]);
-            console.log("Este es el email" + dato["email"]);
-
-            console.log("Este es el rol que deberia coger el IF:  " + dato["role"])
 
             if(dato["role"] == "Artist"){
                 window.location.href = "http://localhost:8080/Taller5Rest_3-1.0-SNAPSHOT/artista.html";
@@ -57,7 +40,6 @@ formulario.addEventListener("submit",function(e){
             }
 
        })
-    //(Response.status == 200){  window.location.href="./index.html"; }
 })
 
 

@@ -16,7 +16,7 @@ public class UsersResource {
     static final String JDBC_DRIVER = "org.postgresql.Driver";
     static final String DB_URL = "jdbc:postgresql://localhost/postgres";
     static final String USER = "postgres";
-    static final String PASS = "minicraftteo";
+    static final String PASS = "monosusio";
     Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
 
@@ -41,20 +41,13 @@ public class UsersResource {
 
             UsersService usersService = new UsersService(conn);
             users = usersService.listUsers();
-
-            //PetsService petsService = new PetsService(conn);
-            //petsService.countBySpecies("dog");
-
-            //OwnersService ownersService = new OwnersService(conn);
-            //ownersService.updateOwner(new Owner(6697, null, "Pepe"));
-
             conn.close();
         } catch (SQLException se) {
-            se.printStackTrace(); // Handling errors from database
+            se.printStackTrace();
         } catch (ClassNotFoundException e) {
-            e.printStackTrace(); // Handling errors from JDBC driver
+            e.printStackTrace();
         } finally {
-            // Cleaning-up environment
+
             try {
                 if (conn != null) conn.close();
             } catch (SQLException se) {
@@ -120,78 +113,6 @@ public class UsersResource {
         }
 
     }
-
-
-   /* @POST
-    @Path("/found")
-    public Response found (@FormParam("username")String name,@FormParam("password")String password) throws SQLException {
-
-        Usuario usuario = null;
-        Connection connection = null;
-        List<Usuario> list = new ArrayList<>();
-        try {
-            Class.forName(JDBC_DRIVER);
-            connection = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement statement = connection.createStatement();
-            String query = "SELECT  * FROM Usuario";
-            ResultSet result = statement.executeQuery(query);
-            System.out.println("sexo con monos, la secuela");
-            while (result.next()) {
-
-                String username = result.getString("username");
-                String key = result.getString("password");
-                String role = result.getString("role");
-                if (Optional.ofNullable(role).orElse("Shopper").equalsIgnoreCase("Artist"))
-                    list.add(new Artist(name, password, ""));
-                else
-                    list.add(new Shopper(name, password, 0));
-            }
-                list.forEach(x -> System.out.println(x));
-                usuario = list.stream()
-                        .filter(x -> x.getUsername().equals(username) && x.getPassword().equals(password))
-                        .findFirst()
-                        .orElse(null);
-
-                System.out.println("sexo con monos");
-            }
-            statement.close();
-            connection.close();
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-
-        }
-
-        return Response.ok()
-                .entity(usuario)
-                .build();
-    }*/
-
-    /*@GET
-    @Path("/{username}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response get(@PathParam("username") String username){
-
-        List<Usuario> users = new UsersService(conn).listUsers();
-
-        Usuario user = users.stream()
-                .filter(u -> u.getUsername().equals(username))
-                .findFirst()
-                .orElse(null);
-
-        if (user != null) {
-
-            return Response.ok()
-                    .entity(user)
-                    .build();
-        } else {
-            return Response.status(404)
-                    .entity(new ExceptionMessage(404, "User not found"))
-                    .build();
-        }
-
-    }*/
 
     @POST
     @Path("/form")

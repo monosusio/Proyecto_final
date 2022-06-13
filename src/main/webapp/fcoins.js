@@ -4,18 +4,13 @@ var formularioFCoins = document.getElementById("recarga");
 formularioFCoins.addEventListener("submit",function(e){
     e.preventDefault();
 
-    console.log("estos son los fcoins "+document.getElementById("fcoins").value);
-
-    console.log("este es el email "+localStorage.getItem("email"));
     const timestamp = Date.now();
     const fecha = new Date(timestamp);
     const registeredat = toString(fecha);
 
     var data = {
-
         "email":  localStorage.getItem("email"),
         "fcoins": document.getElementById("fcoins").value,
-
     };
 
     console.log("la fecha es"+registeredat);
